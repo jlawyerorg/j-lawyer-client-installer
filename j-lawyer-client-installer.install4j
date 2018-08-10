@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="6.1.6" transformSequenceNumber="5">
   <directoryPresets config="../j-lawyer-releases/j-lawyer-client" />
-  <application name="j-lawyer.org (Client)" distributionSourceDir="" applicationId="2679-5007-8596-7844" mediaDir="./media" mediaFilePattern="${compiler:sys.shortName}_${compiler:sys.platform}_${compiler:sys.version}" compression="9" lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" commonExternalFiles="false" createMd5Sums="true" shrinkRuntime="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="http://www.j-lawyer.org" version="1.9.0" allPathsRelative="true" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
+  <application name="j-lawyer.org (Client)" distributionSourceDir="" applicationId="2679-5007-8596-7844" mediaDir="./media" mediaFilePattern="${compiler:sys.shortName}_${compiler:sys.platform}_${compiler:sys.version}" compression="9" lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" commonExternalFiles="false" createMd5Sums="true" shrinkRuntime="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="http://www.j-lawyer.org" version="1.9.1" allPathsRelative="true" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
     <languages skipLanguageSelection="false" languageSelectionInPrincipalLanguage="false">
       <principalLanguage id="de" customLocalizationFile="./j-lawyer-installer-client-i18n.properties" />
       <additionalLanguages>
@@ -17,11 +17,12 @@
       <variable name="win64.libreoffice.batchfile" value="libreoffice-install-win64.bat" description="" category="" />
       <variable name="win32.libreoffice.batchfile" value="libreoffice-install-win32.bat" description="" category="" />
       <variable name="linux.libreoffice.batchfile" value="libreoffice-install-linux.sh" description="" category="" />
-      <variable name="win32.libreoffice.downloadfile" value="LibreOffice_5.0.3_Win_x86.msi" description="" category="" />
-      <variable name="download.3rdparty.base" value="http://www.j-lawyer.org/downloads/installer-3rdparty/" description="" category="" />
+      <variable name="win32.libreoffice.downloadfile" value="LibreOffice_6.1.0_Win_x86.msi" description="" category="" />
+      <variable name="download.base" value="https://www.j-lawyer.org/downloads/" description="" category="" />
+      <variable name="download.3rdparty.base" value="https://www.j-lawyer.org/downloads/installer-3rdparty/" description="" category="" />
       <variable name="mac.libreoffice.downloadfile" value="LibreOffice_4.2.8.2_MacOS_x86-64.dmg" description="" category="" />
-      <variable name="win64.libreoffice.downloadfile" value="LibreOffice_5.0.3_Win_x86.msi" description="reset to 32Bit installer - unoconv does currently not work with 64Bit LibreOffice/Python" category="" />
-      <variable name="download.3rdparty.libreoffice.version" value="5.0.3" description="" category="" />
+      <variable name="win64.libreoffice.downloadfile" value="LibreOffice_6.1.0_Win_x64.msi" description="reset to 32Bit installer - unoconv does currently not work with 64Bit LibreOffice/Python" category="" />
+      <variable name="download.3rdparty.libreoffice.version" value="6.1.0" description="" category="" />
       <variable name="download.3rdparty.mysql.version" value="5.7" description="" category="" />
     </variables>
     <mergedProjects />
@@ -72,39 +73,6 @@
         </text>
       </splashScreen>
       <java mainClass="com.jdimension.jlawyer.client.Main" vmParameters="-Xmx1024M -Djava.security.auth.login.config=auth.conf -Djava.net.preferIPv4Stack=true" arguments="" allowVMPassthroughParameters="true" preferredVM="client" bundleRuntime="true">
-        <classPath>
-          <archive location="j-lawyer-client.jar" failOnError="false" />
-        </classPath>
-        <nativeLibraryDirectories />
-        <vmOptions />
-      </java>
-      <includedFiles />
-      <unextractableFiles />
-      <vmOptionsFile mode="template" overwriteMode="0" fileMode="644">
-        <content />
-      </vmOptionsFile>
-      <customScript mode="1" file="">
-        <content />
-      </customScript>
-      <infoPlist mode="1" file="">
-        <content />
-      </infoPlist>
-      <iconImageFiles>
-        <file path="../j-lawyer-releases/j-lawyer-client/j-lawyer-logo-32px.png" />
-        <file path="../j-lawyer-releases/j-lawyer-client/j-lawyer-logo-128px.png" />
-      </iconImageFiles>
-    </launcher>
-    <launcher name="j-lawyer-Client-en" id="78" customizedId="" external="false" excludeFromMenu="false" unixMode="755" unixAutoStart="true" menuName="" icnsFile="" customMacBundleIdentifier="false" macBundleIdentifier="" swtApp="false" fileset="" macBundleBinary="JavaApplicationStub" addMacEntitlements="false" macEntitlementsFile="" useCustomMacosExecutableName="false" customMacosExecutableName="" useJavaMinVersionOverride="false" javaMinVersionOverride="" useJavaMaxVersionOverride="false" javaMaxVersionOverride="">
-      <executable name="j-lawyer-Client-en" type="1" iconSet="true" iconFile="" executableDir="." redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="false" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker" checkConsoleParameter="true" globalSingleInstance="false" singleInstanceActivate="true" dpiAware="false">
-        <versionInfo include="true" fileVersion="${compiler:sys.version}" fileDescription="http://www.j-lawyer.org" legalCopyright="http://creativecommons.org/licenses/by-nc-nd/3.0/de/" internalName="${compiler:sys.shortName}" productName="${compiler:sys.fullName}${compiler:sys.fullName}" />
-      </executable>
-      <splashScreen show="false" width="0" height="0" bitmapFile="" windowsNative="false" textOverlay="false">
-        <text>
-          <statusLine x="20" y="20" text="" fontSize="8" fontColor="0,0,0" bold="false" />
-          <versionLine x="20" y="40" text="version ${compiler:sys.version}" fontSize="8" fontColor="0,0,0" bold="false" />
-        </text>
-      </splashScreen>
-      <java mainClass="com.jdimension.jlawyer.client.Main" vmParameters="-Xmx1024M -Djava.security.auth.login.config=auth.conf -Duser.language=en -Djava.net.preferIPv4Stack=true" arguments="" allowVMPassthroughParameters="true" preferredVM="client" bundleRuntime="true">
         <classPath>
           <archive location="j-lawyer-client.jar" failOnError="false" />
         </classPath>
@@ -1051,7 +1019,7 @@ context.setVariable("libreoffice.installmode", "install");
 
 if(Util.isWindows()) {
     // default location is C:\Program Files(x86)\LibreOffice 5
-    String defaultLoc=WinEnvVars.getenv("ProgramFiles(x86)") + File.separator + "LibreOffice 5" + File.separator + "program";
+    String defaultLoc=WinEnvVars.getenv("ProgramFiles(x86)") + File.separator + "LibreOffice 6" + File.separator + "program";
     Util.logInfo(null, "LO default location: " + defaultLoc);
     
     ((JTextField)formEnvironment.getFormComponentById("86").
@@ -1346,7 +1314,7 @@ if(Util.isLinux()) {
                         </object>
                       </void>
                       <void property="url">
-                        <string>${compiler:download.3rdparty.base}${compiler:win32.libreoffice.batchfile}</string>
+                        <string>${compiler:download.base}${installer:sys.version}${compiler:win32.libreoffice.batchfile}</string>
                       </void>
                     </object>
                   </java>
@@ -1388,7 +1356,7 @@ if(Util.isLinux()) {
                         </object>
                       </void>
                       <void property="url">
-                        <string>${compiler:download.3rdparty.base}${compiler:win64.libreoffice.batchfile}</string>
+                        <string>${compiler:download.base}${installer:sys.version}${compiler:win64.libreoffice.batchfile}</string>
                       </void>
                     </object>
                   </java>
@@ -1430,7 +1398,7 @@ if(Util.isLinux()) {
                         </object>
                       </void>
                       <void property="url">
-                        <string>${compiler:download.3rdparty.base}${compiler:linux.libreoffice.batchfile}</string>
+                        <string>${compiler:download.base}${installer:sys.version}${compiler:linux.libreoffice.batchfile}</string>
                       </void>
                     </object>
                   </java>
@@ -2005,7 +1973,7 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
         <customAttributes />
       </autoUpdate>
     </windows>
-    <windows name="Windows-x64" id="29" customizedId="" mediaFileName="" installDir="${compiler:sys.shortName}" overridePrincipalLanguage="false" jreBitType="64" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="false" includedJRE="windows-amd64-1.8.0_162" manualJREEntry="false" bundleType="1" jreURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" customInstallBaseDir="" contentFilesType="1" verifyIntegrity="true">
+    <windows name="Windows-x64" id="29" customizedId="" mediaFileName="" installDir="${compiler:sys.shortName}" overridePrincipalLanguage="false" jreBitType="64" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="false" includedJRE="windows-amd64-1.8.0_181" manualJREEntry="false" bundleType="1" jreURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" customInstallBaseDir="" contentFilesType="1" verifyIntegrity="true">
       <excludedComponents />
       <includedDownloadableComponents />
       <excludedLaunchers />
@@ -2018,7 +1986,7 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
         <customAttributes />
       </autoUpdate>
     </windows>
-    <macos name="Mac OS X Single Bundle" id="30" customizedId="" mediaFileName="" installDir="${compiler:sys.fullName}" overridePrincipalLanguage="false" jreBitType="all" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="false" includedJRE="macosx-amd64-1.8.0_162" manualJREEntry="false" bundleType="1" jreURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" appleJre="false" requiredVmIdPrefix="" customInstallBaseDir="" contentFilesType="1" installerName="${i18n:InstallerName(${compiler:sys.fullName})}" volumeName="${compiler:sys.shortName}" compressDmg="false" launcherId="27">
+    <macos name="Mac OS X Single Bundle" id="30" customizedId="" mediaFileName="" installDir="${compiler:sys.fullName}" overridePrincipalLanguage="false" jreBitType="all" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="false" includedJRE="macosx-amd64-1.8.0_181" manualJREEntry="false" bundleType="1" jreURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" appleJre="false" requiredVmIdPrefix="" customInstallBaseDir="" contentFilesType="1" installerName="${i18n:InstallerName(${compiler:sys.fullName})}" volumeName="${compiler:sys.shortName}" compressDmg="false" launcherId="27">
       <excludedComponents />
       <includedDownloadableComponents />
       <excludedBeans />
