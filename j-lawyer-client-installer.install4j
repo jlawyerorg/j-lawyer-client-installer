@@ -1314,7 +1314,7 @@ if(Util.isLinux()) {
                         </object>
                       </void>
                       <void property="url">
-                        <string>${compiler:download.base}${installer:sys.version}${compiler:win32.libreoffice.batchfile}</string>
+                        <string>${compiler:download.base}${installer:sys.version}/${compiler:win32.libreoffice.batchfile}</string>
                       </void>
                     </object>
                   </java>
@@ -1356,7 +1356,7 @@ if(Util.isLinux()) {
                         </object>
                       </void>
                       <void property="url">
-                        <string>${compiler:download.base}${installer:sys.version}${compiler:win64.libreoffice.batchfile}</string>
+                        <string>${compiler:download.base}${installer:sys.version}/${compiler:win64.libreoffice.batchfile}</string>
                       </void>
                     </object>
                   </java>
@@ -1398,7 +1398,7 @@ if(Util.isLinux()) {
                         </object>
                       </void>
                       <void property="url">
-                        <string>${compiler:download.base}${installer:sys.version}${compiler:linux.libreoffice.batchfile}</string>
+                        <string>${compiler:download.base}${installer:sys.version}/${compiler:linux.libreoffice.batchfile}</string>
                       </void>
                     </object>
                   </java>
@@ -2018,8 +2018,6 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
   </mediaSets>
   <buildIds buildAll="false">
     <mediaSet refId="29" />
-    <mediaSet refId="30" />
-    <mediaSet refId="31" />
   </buildIds>
   <buildOptions verbose="false" faster="false" disableSigning="false" disableJreBundling="false" debug="false" />
 </install4j>
