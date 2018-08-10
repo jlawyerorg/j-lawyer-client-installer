@@ -968,7 +968,7 @@ if("install".equalsIgnoreCase((String)context.getVariable("libreoffice.installmo
     String programFiles=WinEnvVars.getenv("ProgramFiles");
     if(Util.is64BitWindows()) {
         // need to install 32 Bit LibreOffice due to unoconv not working
-        programFiles=WinEnvVars.getenv("ProgramFiles(x86)");
+        //programFiles=WinEnvVars.getenv("ProgramFiles(x86)");
     }
     context.setVariable("libreoffice.path", programFiles + "\\LibreOffice\\program");
 } else {
