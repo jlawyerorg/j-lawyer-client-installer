@@ -64,7 +64,7 @@
   <launchers>
     <launcher name="j-lawyer-Client" id="27" customizedId="" external="false" excludeFromMenu="false" unixMode="755" unixAutoStart="true" menuName="" icnsFile="" customMacBundleIdentifier="false" macBundleIdentifier="" swtApp="false" fileset="" macBundleBinary="JavaApplicationStub" addMacEntitlements="false" macEntitlementsFile="" useCustomMacosExecutableName="false" customMacosExecutableName="" useJavaMinVersionOverride="false" javaMinVersionOverride="" useJavaMaxVersionOverride="false" javaMaxVersionOverride="">
       <executable name="j-lawyer-Client" type="1" iconSet="true" iconFile="" executableDir="." redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="false" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker" checkConsoleParameter="true" globalSingleInstance="false" singleInstanceActivate="true" dpiAware="false">
-        <versionInfo include="true" fileVersion="${compiler:sys.version}" fileDescription="http://www.j-lawyer.org" legalCopyright="http://creativecommons.org/licenses/by-nc-nd/3.0/de/" internalName="${compiler:sys.shortName}" productName="${compiler:sys.fullName}" />
+        <versionInfo include="true" fileVersion="${compiler:sys.version}" fileDescription="http://www.j-lawyer.org" legalCopyright="https://www.gnu.org/licenses/agpl-3.0.de.html" internalName="${compiler:sys.shortName}" productName="${compiler:sys.fullName}" />
       </executable>
       <splashScreen show="false" width="0" height="0" bitmapFile="" windowsNative="false" textOverlay="false">
         <text>
@@ -1960,7 +1960,7 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
     </applications>
   </installerGui>
   <mediaSets>
-    <windows name="Windows-x86" id="28" customizedId="" mediaFileName="" installDir="${compiler:sys.shortName}" overridePrincipalLanguage="false" jreBitType="32" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="false" includedJRE="windows-x86-1.8.0_162" manualJREEntry="false" bundleType="1" jreURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" customInstallBaseDir="" contentFilesType="1" verifyIntegrity="true">
+    <windows name="Windows-x86" id="28" customizedId="" mediaFileName="" installDir="${compiler:sys.shortName}" overridePrincipalLanguage="false" jreBitType="32" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="false" includedJRE="windows-x86-1.8.0_181" manualJREEntry="false" bundleType="1" jreURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" customInstallBaseDir="" contentFilesType="1" verifyIntegrity="true">
       <excludedComponents />
       <includedDownloadableComponents />
       <excludedLaunchers />
@@ -2017,7 +2017,10 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
     </unixInstaller>
   </mediaSets>
   <buildIds buildAll="false">
+    <mediaSet refId="28" />
     <mediaSet refId="29" />
+    <mediaSet refId="30" />
+    <mediaSet refId="31" />
   </buildIds>
   <buildOptions verbose="false" faster="false" disableSigning="false" disableJreBundling="false" debug="false" />
 </install4j>
