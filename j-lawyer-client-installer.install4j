@@ -2022,5 +2022,5 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
     <mediaSet refId="30" />
     <mediaSet refId="31" />
   </buildIds>
-  <buildOptions verbose="false" faster="false" disableSigning="false" disableJreBundling="false" debug="false" />
+  <buildOptions verbose="true" faster="false" disableSigning="false" disableJreBundling="false" debug="false" />
 </install4j>
