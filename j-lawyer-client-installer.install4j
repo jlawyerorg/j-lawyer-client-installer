@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<install4j version="6.1.6" transformSequenceNumber="5">
-  <directoryPresets config="../j-lawyer-releases/j-lawyer-client" />
+<install4j version="7.0.10" transformSequenceNumber="7">
+  <directoryPresets config="../j-lawyer-releases/j-lawyer-client/j-lawyer.org (Client).desktop" />
   <application name="j-lawyer.org (Client)" distributionSourceDir="" applicationId="2679-5007-8596-7844" mediaDir="./media" mediaFilePattern="${compiler:sys.shortName}_${compiler:sys.platform}_${compiler:sys.version}" compression="9" lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" commonExternalFiles="false" createMd5Sums="true" shrinkRuntime="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="http://www.j-lawyer.org" version="1.9.1" allPathsRelative="true" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
     <languages skipLanguageSelection="false" languageSelectionInPrincipalLanguage="false">
       <principalLanguage id="de" customLocalizationFile="./j-lawyer-installer-client-i18n.properties" />
@@ -26,7 +26,10 @@
       <variable name="download.3rdparty.mysql.version" value="5.7" description="" category="" />
     </variables>
     <mergedProjects />
-    <codeSigning macEnabled="false" macPkcs12File="" windowsEnabled="false" windowsKeySource="pkcs12" windowsPvkFile="" windowsSpcFile="" windowsPkcs12File="" />
+    <codeSigning macEnabled="false" macPkcs12File="" windowsEnabled="false" windowsKeySource="pkcs12" windowsPvkFile="" windowsSpcFile="" windowsPkcs12File="" windowsPkcs11Library="" windowsPkcs11Slot="">
+      <windowsKeystoreIdentifier issuer="" serial="" subject="" />
+      <windowsPkcs11Identifier issuer="" serial="" subject="" />
+    </codeSigning>
   </application>
   <files keepModificationTimes="false" missingFilesStrategy="warn" globalExcludeSuffixes="" defaultOverwriteMode="1" defaultUninstallMode="0" launcherOverwriteMode="3" defaultFileMode="644" defaultDirMode="755">
     <filesets />
@@ -52,6 +55,8 @@
       <fileEntry mountPoint="24" file="../j-lawyer-releases/j-lawyer-client/run.sh" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="false" overrideUninstallMode="false" />
       <fileEntry mountPoint="24" file="../j-lawyer-releases/j-lawyer-client/unoconv.bat" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="false" overrideUninstallMode="false" />
       <fileEntry mountPoint="24" file="../j-lawyer-releases/j-lawyer-client/run-ipv4.bat" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="false" overrideUninstallMode="false" />
+      <fileEntry mountPoint="24" file="../j-lawyer-releases/j-lawyer-client/add-to-desktop.sh" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="false" overrideUninstallMode="false" />
+      <fileEntry mountPoint="24" file="../j-lawyer-releases/j-lawyer-client/j-lawyer-client.desktop" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="false" overrideUninstallMode="false" />
     </entries>
     <components>
       <component name="j-lawyer Client" id="22" customizedId="" displayDescription="true" hideHelpButton="false" selected="true" changeable="false" downloadable="false" hidden="false">
@@ -62,20 +67,21 @@
     </components>
   </files>
   <launchers>
-    <launcher name="j-lawyer-Client" id="27" customizedId="" external="false" excludeFromMenu="false" unixMode="755" unixAutoStart="true" menuName="" icnsFile="" customMacBundleIdentifier="false" macBundleIdentifier="" swtApp="false" fileset="" macBundleBinary="JavaApplicationStub" addMacEntitlements="false" macEntitlementsFile="" useCustomMacosExecutableName="false" customMacosExecutableName="" useJavaMinVersionOverride="false" javaMinVersionOverride="" useJavaMaxVersionOverride="false" javaMaxVersionOverride="">
+    <launcher name="j-lawyer-Client" id="27" customizedId="" external="false" excludeFromMenu="false" unixMode="755" unixAutoStart="true" menuName="" icnsFile="" customMacBundleIdentifier="false" macBundleIdentifier="" swtApp="false" fileset="" macBundleBinary="JavaApplicationStub" addMacEntitlements="false" macEntitlementsFile="" useCustomMacosExecutableName="false" customMacosExecutableName="" useJavaMinVersionOverride="false" javaMinVersionOverride="" useJavaMaxVersionOverride="false" javaMaxVersionOverride="" checkUpdater="false" updateExecutionMode="unattendedProgress" unattendedUpdateTitle="${i18n:updater.WindowTitle(&quot;${compiler:sys.fullName}&quot;)}">
       <executable name="j-lawyer-Client" type="1" iconSet="true" iconFile="" executableDir="." redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="false" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker" checkConsoleParameter="true" globalSingleInstance="false" singleInstanceActivate="true" dpiAware="false">
         <versionInfo include="true" fileVersion="${compiler:sys.version}" fileDescription="http://www.j-lawyer.org" legalCopyright="https://www.gnu.org/licenses/agpl-3.0.de.html" internalName="${compiler:sys.shortName}" productName="${compiler:sys.fullName}" />
       </executable>
-      <splashScreen show="false" width="0" height="0" bitmapFile="" windowsNative="false" textOverlay="false">
+      <splashScreen show="false" width="0" height="0" bitmapFile="" textOverlay="false">
         <text>
           <statusLine x="20" y="20" text="" fontSize="8" fontColor="0,0,0" bold="false" />
           <versionLine x="20" y="40" text="version ${compiler:sys.version}" fontSize="8" fontColor="0,0,0" bold="false" />
         </text>
       </splashScreen>
-      <java mainClass="com.jdimension.jlawyer.client.Main" vmParameters="-Xmx1024M -Djava.security.auth.login.config=auth.conf -Djava.net.preferIPv4Stack=true" arguments="" allowVMPassthroughParameters="true" preferredVM="client" bundleRuntime="true">
+      <java mainClass="com.jdimension.jlawyer.client.Main" mainMode="1" vmParameters="-Xmx1024M -Djava.security.auth.login.config=auth.conf -Djava.net.preferIPv4Stack=true" arguments="" allowVMPassthroughParameters="true" preferredVM="client" bundleRuntime="true">
         <classPath>
           <archive location="j-lawyer-client.jar" failOnError="false" />
         </classPath>
+        <modulePath />
         <nativeLibraryDirectories />
         <vmOptions />
       </java>
@@ -104,27 +110,32 @@
       <customAttributes />
     </autoUpdate>
     <applications>
-      <application name="" id="installer" customizedId="" beanClass="com.install4j.runtime.beans.applications.InstallerApplication" enabled="true" commentSet="false" comment="" actionElevationType="none" fileset="" customIcnsFile="" customIcoFile="" macEntitlementsFile="" automaticLauncherIntegration="false" launchMode="startupFirstWindow" launchInNewProcess="false" launchSchedule="updateSchedule" allLaunchers="true">
+      <application name="" id="installer" customizedId="" beanClass="com.install4j.runtime.beans.applications.InstallerApplication" enabled="true" commentSet="false" comment="" actionElevationType="none" styleId="" fileset="" customIcnsFile="" customIcoFile="" macEntitlementsFile="" automaticLauncherIntegration="false" launchMode="startupFirstWindow" launchInNewProcess="false" launchSchedule="updateSchedule" allLaunchers="true">
         <serializedBean>
           <java class="java.beans.XMLDecoder">
             <object class="com.install4j.runtime.beans.applications.InstallerApplication" />
           </java>
         </serializedBean>
+        <styleOverrides />
+        <customScript mode="1" file="">
+          <content />
+        </customScript>
         <launcherIds />
         <variables />
         <startup>
-          <screen name="" id="1" customizedId="" beanClass="com.install4j.runtime.beans.screens.StartupScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
+          <screen name="" id="1" customizedId="" beanClass="com.install4j.runtime.beans.screens.StartupScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" styleId="" rollbackBarrier="false" rollbackBarrierExitCode="0" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
                 <object class="com.install4j.runtime.beans.screens.StartupScreen" />
               </java>
             </serializedBean>
+            <styleOverrides />
             <condition />
             <validation />
             <preActivation />
             <postActivation />
             <actions>
-              <action name="" id="13" customizedId="" beanClass="com.install4j.runtime.beans.actions.misc.RequestPrivilegesAction" enabled="true" commentSet="false" comment="" actionElevationType="none" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+              <action name="" id="13" customizedId="" beanClass="com.install4j.runtime.beans.actions.misc.RequestPrivilegesAction" enabled="true" commentSet="false" comment="" actionElevationType="none" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="1" errorMessage="">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.misc.RequestPrivilegesAction">
@@ -141,18 +152,19 @@
           </screen>
         </startup>
         <screens>
-          <screen name="" id="2" customizedId="" beanClass="com.install4j.runtime.beans.screens.WelcomeScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
+          <screen name="" id="2" customizedId="" beanClass="com.install4j.runtime.beans.screens.WelcomeScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" styleId="649" rollbackBarrier="false" rollbackBarrierExitCode="1" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
                 <object class="com.install4j.runtime.beans.screens.WelcomeScreen" />
               </java>
             </serializedBean>
+            <styleOverrides />
             <condition />
             <validation />
             <preActivation />
             <postActivation />
             <actions>
-              <action name="" id="3" customizedId="" beanClass="com.install4j.runtime.beans.actions.misc.LoadResponseFileAction" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" multiExec="true" failureStrategy="1" errorMessage="">
+              <action name="" id="3" customizedId="" beanClass="com.install4j.runtime.beans.actions.misc.LoadResponseFileAction" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="true" failureStrategy="1" errorMessage="">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.misc.LoadResponseFileAction">
@@ -169,14 +181,102 @@
                 <condition>context.getBooleanVariable("sys.confirmedUpdateInstallation")</condition>
               </action>
             </actions>
-            <formComponents />
+            <formComponents>
+              <formComponent name="" id="36" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent">
+                      <void property="labelText">
+                        <string>${form:welcomeMessage}</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript>!context.isConsole()</visibilityScript>
+                <externalParametrizationPropertyNames />
+              </formComponent>
+              <formComponent name="" id="37" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.ConsoleHandlerFormComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.ConsoleHandlerFormComponent">
+                      <void property="consoleScript">
+                        <object class="com.install4j.api.beans.ScriptProperty">
+                          <void property="value">
+                            <string>String message = context.getMessage("ConsoleWelcomeLabel", context.getApplicationName());
+return console.askOkCancel(message, true);
+</string>
+                          </void>
+                        </object>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames />
+              </formComponent>
+              <formComponent name="" id="38" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.UpdateAlertComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="true" externalParametrizationName="Update Alert" externalParametrizationMode="include">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.UpdateAlertComponent" />
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames>
+                  <propertyName>updateCheck</propertyName>
+                </externalParametrizationPropertyNames>
+              </formComponent>
+              <formComponent name="" id="39" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent" enabled="true" commentSet="false" comment="" insetTop="20" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent">
+                      <void property="labelText">
+                        <string>${i18n:ClickNext}</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames />
+              </formComponent>
+            </formComponents>
           </screen>
-          <screen name="" id="481" customizedId="" beanClass="com.install4j.runtime.beans.screens.LicenseScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
+          <screen name="" id="481" customizedId="" beanClass="com.install4j.runtime.beans.screens.LicenseScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" styleId="" rollbackBarrier="false" rollbackBarrierExitCode="1" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
-                <object class="com.install4j.runtime.beans.screens.LicenseScreen">
-                  <void property="displayedText">
-                    <string>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                <object class="com.install4j.runtime.beans.screens.LicenseScreen" />
+              </java>
+            </serializedBean>
+            <styleOverrides />
+            <condition />
+            <validation />
+            <preActivation />
+            <postActivation />
+            <actions />
+            <formComponents>
+              <formComponent name="" id="483" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent">
+                      <void property="labelText">
+                        <string>${i18n:LicenseLabel3}</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames />
+              </formComponent>
+              <formComponent name="" id="484" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.LicenseComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="true" externalParametrizationName="License Agreement" externalParametrizationMode="include">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.LicenseComponent">
+                      <void property="displayedText">
+                        <string>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
 
 &lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;
@@ -867,39 +967,45 @@ For more information on this, and how to apply and follow the GNU AGPL, see
 
 &lt;/body&gt;&lt;/html&gt;
 </string>
-                  </void>
-                  <void property="textSource">
-                    <object class="java.lang.Enum" method="valueOf">
-                      <class>com.install4j.runtime.beans.screens.components.TextSource</class>
-                      <string>DIRECT</string>
+                      </void>
+                      <void property="fillVertical">
+                        <boolean>true</boolean>
+                      </void>
+                      <void property="textSource">
+                        <object class="java.lang.Enum" method="valueOf">
+                          <class>com.install4j.runtime.beans.screens.components.TextSource</class>
+                          <string>DIRECT</string>
+                        </object>
+                      </void>
                     </object>
-                  </void>
-                </object>
-              </java>
-            </serializedBean>
-            <condition />
-            <validation />
-            <preActivation />
-            <postActivation />
-            <actions />
-            <formComponents />
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames>
+                  <propertyName>textSource</propertyName>
+                  <propertyName>displayedText</propertyName>
+                  <propertyName>displayedTextFile</propertyName>
+                  <propertyName>variableName</propertyName>
+                  <propertyName>acceptInitiallySelected</propertyName>
+                  <propertyName>readAllRequired</propertyName>
+                </externalParametrizationPropertyNames>
+              </formComponent>
+            </formComponents>
           </screen>
-          <screen name="" id="4" customizedId="" beanClass="com.install4j.runtime.beans.screens.InstallationDirectoryScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
+          <screen name="" id="4" customizedId="" beanClass="com.install4j.runtime.beans.screens.InstallationDirectoryScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" styleId="" rollbackBarrier="false" rollbackBarrierExitCode="1" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
-                <object class="com.install4j.runtime.beans.screens.InstallationDirectoryScreen">
-                  <void property="allowNewFolderCreation">
-                    <boolean>true</boolean>
-                  </void>
-                </object>
+                <object class="com.install4j.runtime.beans.screens.InstallationDirectoryScreen" />
               </java>
             </serializedBean>
+            <styleOverrides />
             <condition>!context.getBooleanVariable("sys.confirmedUpdateInstallation")</condition>
             <validation />
             <preActivation />
             <postActivation />
             <actions>
-              <action name="" id="5" customizedId="" beanClass="com.install4j.runtime.beans.actions.misc.LoadResponseFileAction" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" multiExec="true" failureStrategy="1" errorMessage="">
+              <action name="" id="5" customizedId="" beanClass="com.install4j.runtime.beans.actions.misc.LoadResponseFileAction" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="true" failureStrategy="1" errorMessage="">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.misc.LoadResponseFileAction">
@@ -916,22 +1022,95 @@ For more information on this, and how to apply and follow the GNU AGPL, see
                 <condition>context.getVariable("sys.responseFile") == null</condition>
               </action>
             </actions>
-            <formComponents />
+            <formComponents>
+              <formComponent name="" id="488" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="25" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent">
+                      <void property="labelText">
+                        <string>${i18n:SelectDirLabel(${compiler:sys.fullName})}</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames />
+              </formComponent>
+              <formComponent name="" id="489" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.InstallationDirectoryChooserComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="true" externalParametrizationName="Installation Directory Chooser" externalParametrizationMode="include">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.InstallationDirectoryChooserComponent">
+                      <void property="requestFocus">
+                        <boolean>true</boolean>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames>
+                  <propertyName>suggestAppDir</propertyName>
+                  <propertyName>validateApplicationId</propertyName>
+                  <propertyName>existingDirWarning</propertyName>
+                  <propertyName>checkWritable</propertyName>
+                  <propertyName>manualEntryAllowed</propertyName>
+                  <propertyName>checkFreeSpace</propertyName>
+                  <propertyName>showRequiredDiskSpace</propertyName>
+                  <propertyName>showFreeDiskSpace</propertyName>
+                  <propertyName>allowSpacesOnUnix</propertyName>
+                  <propertyName>validationScript</propertyName>
+                  <propertyName>standardValidation</propertyName>
+                </externalParametrizationPropertyNames>
+              </formComponent>
+            </formComponents>
           </screen>
-          <screen name="" id="6" customizedId="" beanClass="com.install4j.runtime.beans.screens.ComponentsScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
+          <screen name="" id="6" customizedId="" beanClass="com.install4j.runtime.beans.screens.ComponentsScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" styleId="" rollbackBarrier="false" rollbackBarrierExitCode="1" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
                 <object class="com.install4j.runtime.beans.screens.ComponentsScreen" />
               </java>
             </serializedBean>
+            <styleOverrides />
             <condition />
             <validation />
             <preActivation />
             <postActivation />
             <actions />
-            <formComponents />
+            <formComponents>
+              <formComponent name="" id="492" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent">
+                      <void property="labelText">
+                        <string>${i18n:SelectComponentsLabel2}</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript>!context.isConsole()</visibilityScript>
+                <externalParametrizationPropertyNames />
+              </formComponent>
+              <formComponent name="" id="493" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.ComponentSelectorComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="true" externalParametrizationName="Installation Components" externalParametrizationMode="include">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.ComponentSelectorComponent">
+                      <void property="fillVertical">
+                        <boolean>true</boolean>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames>
+                  <propertyName>selectionChangedScript</propertyName>
+                </externalParametrizationPropertyNames>
+              </formComponent>
+            </formComponents>
           </screen>
-          <screen name="" id="7" customizedId="" beanClass="com.install4j.runtime.beans.screens.StandardProgramGroupScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
+          <screen name="" id="7" customizedId="" beanClass="com.install4j.runtime.beans.screens.StandardProgramGroupScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" styleId="" rollbackBarrier="false" rollbackBarrierExitCode="1" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
                 <object class="com.install4j.runtime.beans.screens.StandardProgramGroupScreen">
@@ -941,6 +1120,7 @@ For more information on this, and how to apply and follow the GNU AGPL, see
                 </object>
               </java>
             </serializedBean>
+            <styleOverrides />
             <condition>!context.getBooleanVariable("sys.confirmedUpdateInstallation")</condition>
             <validation />
             <preActivation />
@@ -948,7 +1128,7 @@ For more information on this, and how to apply and follow the GNU AGPL, see
             <actions />
             <formComponents />
           </screen>
-          <screen name="LibreOffice installation on Windows" id="84" customizedId="" beanClass="com.install4j.runtime.beans.screens.FormScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
+          <screen name="LibreOffice installation on Windows" id="84" customizedId="" beanClass="com.install4j.runtime.beans.screens.FormScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" styleId="" rollbackBarrier="false" rollbackBarrierExitCode="1" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
                 <object class="com.install4j.runtime.beans.screens.FormScreen">
@@ -961,6 +1141,7 @@ For more information on this, and how to apply and follow the GNU AGPL, see
                 </object>
               </java>
             </serializedBean>
+            <styleOverrides />
             <condition>!context.getBooleanVariable("sys.confirmedUpdateInstallation")</condition>
             <validation>// need to set libreoffice.path so that we can later add it to PATH variable on windows
 if("install".equalsIgnoreCase((String)context.getVariable("libreoffice.installmode"))) {
@@ -1092,7 +1273,7 @@ if(Util.isLinux()) {
             <postActivation />
             <actions />
             <formComponents>
-              <formComponent name="radioLibreOfficeInstall" id="88" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.SingleRadiobuttonComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+              <formComponent name="radioLibreOfficeInstall" id="88" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.SingleRadiobuttonComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.formcomponents.SingleRadiobuttonComponent">
@@ -1120,8 +1301,9 @@ if(Util.isLinux()) {
                 </serializedBean>
                 <initScript />
                 <visibilityScript />
+                <externalParametrizationPropertyNames />
               </formComponent>
-              <formComponent name="radioLibreOfficeSelectLocal" id="89" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.SingleRadiobuttonComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+              <formComponent name="radioLibreOfficeSelectLocal" id="89" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.SingleRadiobuttonComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.formcomponents.SingleRadiobuttonComponent">
@@ -1146,8 +1328,9 @@ if(Util.isLinux()) {
                 </serializedBean>
                 <initScript />
                 <visibilityScript />
+                <externalParametrizationPropertyNames />
               </formComponent>
-              <formComponent name="chooseLibreOfficeLocalDir" id="86" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.DirectoryChooserComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+              <formComponent name="chooseLibreOfficeLocalDir" id="86" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.DirectoryChooserComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.formcomponents.DirectoryChooserComponent">
@@ -1255,16 +1438,14 @@ if(Util.isLinux()) {
     
 }</initScript>
                 <visibilityScript />
+                <externalParametrizationPropertyNames />
               </formComponent>
             </formComponents>
           </screen>
-          <screen name="LibreOffice progress" id="183" customizedId="" beanClass="com.install4j.runtime.beans.screens.CustomizableProgressScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
+          <screen name="LibreOffice progress" id="183" customizedId="" beanClass="com.install4j.runtime.beans.screens.FormScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" styleId="" rollbackBarrier="false" rollbackBarrierExitCode="1" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
-                <object class="com.install4j.runtime.beans.screens.CustomizableProgressScreen">
-                  <void property="cancelEnabled">
-                    <boolean>false</boolean>
-                  </void>
+                <object class="com.install4j.runtime.beans.screens.FormScreen">
                   <void property="subTitle">
                     <string>LibreOffice ${compiler:download.3rdparty.libreoffice.version} in ${installer:sys.downloadsDir}</string>
                   </void>
@@ -1274,12 +1455,17 @@ if(Util.isLinux()) {
                 </object>
               </java>
             </serializedBean>
+            <styleOverrides />
             <condition>!context.getBooleanVariable("sys.confirmedUpdateInstallation")</condition>
             <validation />
-            <preActivation />
-            <postActivation />
+            <preActivation>context.getWizardContext().setControlButtonEnabled(ControlButtonType.CANCEL, false);
+</preActivation>
+            <postActivation>context.getWizardContext().setControlButtonVisible(ControlButtonType.NEXT, false);
+context.getWizardContext().setControlButtonVisible(ControlButtonType.PREVIOUS, false);
+context.goForward(1, true, true);
+</postActivation>
             <actions>
-              <action name="Download LibreOffice Win32" id="188" customizedId="" beanClass="com.install4j.runtime.beans.actions.net.DownloadFileAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" multiExec="false" failureStrategy="2" errorMessage="${i18n:error.download.libreoffice}">
+              <action name="Download LibreOffice Win32" id="188" customizedId="" beanClass="com.install4j.runtime.beans.actions.net.DownloadFileAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="2" errorMessage="${i18n:error.download.libreoffice}">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.net.DownloadFileAction">
@@ -1301,7 +1487,7 @@ if(Util.isLinux()) {
 
 </condition>
               </action>
-              <action name="Download libreoffice-install-win32.bat" id="275" customizedId="" beanClass="com.install4j.runtime.beans.actions.net.DownloadFileAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" multiExec="false" failureStrategy="2" errorMessage="${i18n:error.download.libreoffice}">
+              <action name="Download libreoffice-install-win32.bat" id="275" customizedId="" beanClass="com.install4j.runtime.beans.actions.net.DownloadFileAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="2" errorMessage="${i18n:error.download.libreoffice}">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.net.DownloadFileAction">
@@ -1323,7 +1509,7 @@ if(Util.isLinux()) {
 
 </condition>
               </action>
-              <action name="Download LibreOffice Win64" id="190" customizedId="" beanClass="com.install4j.runtime.beans.actions.net.DownloadFileAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" multiExec="false" failureStrategy="2" errorMessage="${i18n:error.download.libreoffice}">
+              <action name="Download LibreOffice Win64" id="190" customizedId="" beanClass="com.install4j.runtime.beans.actions.net.DownloadFileAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="2" errorMessage="${i18n:error.download.libreoffice}">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.net.DownloadFileAction">
@@ -1343,7 +1529,7 @@ if(Util.isLinux()) {
                 </serializedBean>
                 <condition>Util.isWindows() &amp;&amp; Util.is64BitWindows() &amp;&amp; "install".equalsIgnoreCase(context.getVariable("libreoffice.installmode").toString())</condition>
               </action>
-              <action name="Download libreoffice-install-win64.bat" id="276" customizedId="" beanClass="com.install4j.runtime.beans.actions.net.DownloadFileAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" multiExec="false" failureStrategy="2" errorMessage="${i18n:error.download.libreoffice}">
+              <action name="Download libreoffice-install-win64.bat" id="276" customizedId="" beanClass="com.install4j.runtime.beans.actions.net.DownloadFileAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="2" errorMessage="${i18n:error.download.libreoffice}">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.net.DownloadFileAction">
@@ -1365,7 +1551,7 @@ if(Util.isLinux()) {
 
 </condition>
               </action>
-              <action name="Download LibreOffice Mac" id="321" customizedId="" beanClass="com.install4j.runtime.beans.actions.net.DownloadFileAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" multiExec="false" failureStrategy="2" errorMessage="${i18n:error.download.libreoffice}">
+              <action name="Download LibreOffice Mac" id="321" customizedId="" beanClass="com.install4j.runtime.beans.actions.net.DownloadFileAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="2" errorMessage="${i18n:error.download.libreoffice}">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.net.DownloadFileAction">
@@ -1385,7 +1571,7 @@ if(Util.isLinux()) {
                 </serializedBean>
                 <condition>Util.isMacOS() &amp;&amp; "install".equalsIgnoreCase(context.getVariable("libreoffice.installmode").toString())</condition>
               </action>
-              <action name="Download libreoffice-install-linux.sh" id="322" customizedId="" beanClass="com.install4j.runtime.beans.actions.net.DownloadFileAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" multiExec="false" failureStrategy="2" errorMessage="${i18n:error.download.libreoffice}">
+              <action name="Download libreoffice-install-linux.sh" id="322" customizedId="" beanClass="com.install4j.runtime.beans.actions.net.DownloadFileAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="2" errorMessage="${i18n:error.download.libreoffice}">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.net.DownloadFileAction">
@@ -1407,7 +1593,7 @@ if(Util.isLinux()) {
 
 </condition>
               </action>
-              <action name="Make libreoffice-install-linux.sh executable" id="427" customizedId="" beanClass="com.install4j.runtime.beans.actions.files.SetModeAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+              <action name="Make libreoffice-install-linux.sh executable" id="427" customizedId="" beanClass="com.install4j.runtime.beans.actions.files.SetModeAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="1" errorMessage="">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.files.SetModeAction">
@@ -1428,7 +1614,7 @@ if(Util.isLinux()) {
                 </serializedBean>
                 <condition>Util.isLinux() &amp;&amp; "install".equalsIgnoreCase(context.getVariable("libreoffice.installmode").toString())</condition>
               </action>
-              <action name="" id="232" customizedId="" beanClass="com.install4j.runtime.beans.actions.control.SetMessageAction" enabled="true" commentSet="false" comment="" actionElevationType="none" rollbackBarrier="false" multiExec="false" failureStrategy="3" errorMessage="${i18n:error.install.libreoffice}">
+              <action name="" id="232" customizedId="" beanClass="com.install4j.runtime.beans.actions.control.SetMessageAction" enabled="true" commentSet="false" comment="" actionElevationType="none" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="3" errorMessage="${i18n:error.install.libreoffice}">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.control.SetMessageAction">
@@ -1449,7 +1635,7 @@ if(Util.isLinux()) {
                 </serializedBean>
                 <condition />
               </action>
-              <action name="" id="277" customizedId="" beanClass="com.install4j.runtime.beans.actions.control.SetProgressAction" enabled="true" commentSet="false" comment="" actionElevationType="none" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+              <action name="" id="277" customizedId="" beanClass="com.install4j.runtime.beans.actions.control.SetProgressAction" enabled="true" commentSet="false" comment="" actionElevationType="none" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="1" errorMessage="">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.control.SetProgressAction">
@@ -1464,7 +1650,7 @@ if(Util.isLinux()) {
                 </serializedBean>
                 <condition />
               </action>
-              <action name="libreoffice-install-win32.bat" id="274" customizedId="" beanClass="com.install4j.runtime.beans.actions.control.RunScriptAction" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" multiExec="false" failureStrategy="3" errorMessage="${i18n:error.install.libreoffice}">
+              <action name="libreoffice-install-win32.bat" id="274" customizedId="" beanClass="com.install4j.runtime.beans.actions.control.RunScriptAction" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="3" errorMessage="${i18n:error.install.libreoffice}">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.control.RunScriptAction">
@@ -1495,7 +1681,7 @@ return true;
                 </serializedBean>
                 <condition>Util.isWindows() &amp;&amp; !(Util.is64BitWindows()) &amp;&amp; "install".equalsIgnoreCase(context.getVariable("libreoffice.installmode").toString())</condition>
               </action>
-              <action name="libreoffice-install-win64.bat" id="231" customizedId="" beanClass="com.install4j.runtime.beans.actions.control.RunScriptAction" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" multiExec="false" failureStrategy="3" errorMessage="${i18n:error.install.libreoffice}">
+              <action name="libreoffice-install-win64.bat" id="231" customizedId="" beanClass="com.install4j.runtime.beans.actions.control.RunScriptAction" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="3" errorMessage="${i18n:error.install.libreoffice}">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.control.RunScriptAction">
@@ -1526,7 +1712,7 @@ return true;
                 </serializedBean>
                 <condition>Util.isWindows() &amp;&amp; Util.is64BitWindows() &amp;&amp; "install".equalsIgnoreCase(context.getVariable("libreoffice.installmode").toString())</condition>
               </action>
-              <action name="Add LibreOffice to PATH on Windows" id="377" customizedId="" beanClass="com.install4j.runtime.beans.actions.misc.ModifyEnvironmentVariableAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+              <action name="Add LibreOffice to PATH on Windows" id="377" customizedId="" beanClass="com.install4j.runtime.beans.actions.misc.ModifyEnvironmentVariableAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="1" errorMessage="">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.misc.ModifyEnvironmentVariableAction">
@@ -1551,26 +1737,31 @@ return true;
                 <condition />
               </action>
             </actions>
-            <formComponents />
+            <formComponents>
+              <formComponent name="" id="513" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.ProgressComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="true" externalParametrizationName="Directory" externalParametrizationMode="include">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.ProgressComponent" />
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames>
+                  <propertyName>statusVisible</propertyName>
+                  <propertyName>initialStatusMessage</propertyName>
+                </externalParametrizationPropertyNames>
+              </formComponent>
+            </formComponents>
           </screen>
-          <screen name="Display Linux instructions for installing LibreOffice" id="425" customizedId="" beanClass="com.install4j.runtime.beans.screens.CustomizableInfoScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
+          <screen name="Display Linux instructions for installing LibreOffice" id="425" customizedId="" beanClass="com.install4j.runtime.beans.screens.FormScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" styleId="" rollbackBarrier="false" rollbackBarrierExitCode="1" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
-                <object class="com.install4j.runtime.beans.screens.CustomizableInfoScreen">
-                  <void property="displayedText">
-                    <string>&lt;html&gt;
-${i18n:screens.libreofficeinstall.linuxhint}&lt;br/&gt;
-&lt;b&gt;${compiler:linux.libreoffice.batchfile}&lt;/b&gt; in &lt;b&gt;${installer:sys.downloadsDir}&lt;/b&gt;
-&lt;/html&gt;</string>
+                <object class="com.install4j.runtime.beans.screens.FormScreen">
+                  <void property="scrollable">
+                    <boolean>false</boolean>
                   </void>
                   <void property="subTitle">
                     <string>${i18n:screens.libreofficeinstall.linuxhint.subtitle}</string>
-                  </void>
-                  <void property="textSource">
-                    <object class="java.lang.Enum" method="valueOf">
-                      <class>com.install4j.runtime.beans.screens.components.TextSource</class>
-                      <string>DIRECT</string>
-                    </object>
                   </void>
                   <void property="title">
                     <string>LibreOffice (Linux)</string>
@@ -1578,33 +1769,91 @@ ${i18n:screens.libreofficeinstall.linuxhint}&lt;br/&gt;
                 </object>
               </java>
             </serializedBean>
+            <styleOverrides />
             <condition>Util.isLinux() &amp;&amp; "install".equalsIgnoreCase(context.getVariable("libreoffice.installmode").toString()) &amp;&amp; !context.getBooleanVariable("sys.confirmedUpdateInstallation")</condition>
             <validation />
             <preActivation />
             <postActivation />
             <actions />
-            <formComponents />
+            <formComponents>
+              <formComponent name="" id="517" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="true" externalParametrizationName="Header" externalParametrizationMode="include">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent">
+                      <void property="hideIfBlank">
+                        <boolean>true</boolean>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript>!context.isConsole()</visibilityScript>
+                <externalParametrizationPropertyNames>
+                  <propertyName>labelText</propertyName>
+                </externalParametrizationPropertyNames>
+              </formComponent>
+              <formComponent name="" id="518" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.HtmlDisplayFormComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="true" externalParametrizationName="HTML display" externalParametrizationMode="include">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.HtmlDisplayFormComponent">
+                      <void property="displayedText">
+                        <string>&lt;html&gt;
+${i18n:screens.libreofficeinstall.linuxhint}&lt;br/&gt;
+&lt;b&gt;${compiler:linux.libreoffice.batchfile}&lt;/b&gt; in &lt;b&gt;${installer:sys.downloadsDir}&lt;/b&gt;
+&lt;/html&gt;</string>
+                      </void>
+                      <void property="fillVertical">
+                        <boolean>true</boolean>
+                      </void>
+                      <void property="textSource">
+                        <object class="java.lang.Enum" method="valueOf">
+                          <class>com.install4j.runtime.beans.screens.components.TextSource</class>
+                          <string>DIRECT</string>
+                        </object>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames>
+                  <propertyName>textSource</propertyName>
+                  <propertyName>displayedText</propertyName>
+                  <propertyName>displayedTextFile</propertyName>
+                  <propertyName>variableName</propertyName>
+                </externalParametrizationPropertyNames>
+              </formComponent>
+              <formComponent name="" id="519" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.ConsoleHandlerFormComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.ConsoleHandlerFormComponent">
+                      <void property="consoleScript">
+                        <object class="com.install4j.api.beans.ScriptProperty">
+                          <void property="value">
+                            <string>console.waitForEnter();
+return true;
+</string>
+                          </void>
+                        </object>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames />
+              </formComponent>
+            </formComponents>
           </screen>
-          <screen name="Display Mac OS instructions for installing LibreOffice" id="426" customizedId="" beanClass="com.install4j.runtime.beans.screens.CustomizableInfoScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
+          <screen name="Display Mac OS instructions for installing LibreOffice" id="426" customizedId="" beanClass="com.install4j.runtime.beans.screens.FormScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" styleId="" rollbackBarrier="false" rollbackBarrierExitCode="1" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
-                <object class="com.install4j.runtime.beans.screens.CustomizableInfoScreen">
-                  <void property="displayedText">
-                    <string>&lt;html&gt;
-${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
-&lt;b&gt;${compiler:mac.libreoffice.downloadfile}&lt;/b&gt; + " in " + &lt;b&gt;${installer:sys.downloadsDir}&lt;/b&gt;
-&lt;/html&gt;
-
-</string>
+                <object class="com.install4j.runtime.beans.screens.FormScreen">
+                  <void property="scrollable">
+                    <boolean>false</boolean>
                   </void>
                   <void property="subTitle">
                     <string>${i18n:screens.libreofficeinstall.machint.subtitle}</string>
-                  </void>
-                  <void property="textSource">
-                    <object class="java.lang.Enum" method="valueOf">
-                      <class>com.install4j.runtime.beans.screens.components.TextSource</class>
-                      <string>DIRECT</string>
-                    </object>
                   </void>
                   <void property="title">
                     <string>LibreOffice (Mac OS)</string>
@@ -1612,26 +1861,112 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
                 </object>
               </java>
             </serializedBean>
+            <styleOverrides />
             <condition>Util.isMacOS() &amp;&amp; "install".equalsIgnoreCase(context.getVariable("libreoffice.installmode").toString()) &amp;&amp; !context.getBooleanVariable("sys.confirmedUpdateInstallation")</condition>
             <validation />
             <preActivation />
             <postActivation />
             <actions />
-            <formComponents />
+            <formComponents>
+              <formComponent name="" id="523" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="true" externalParametrizationName="Header" externalParametrizationMode="include">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent">
+                      <void property="hideIfBlank">
+                        <boolean>true</boolean>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript>!context.isConsole()</visibilityScript>
+                <externalParametrizationPropertyNames>
+                  <propertyName>labelText</propertyName>
+                </externalParametrizationPropertyNames>
+              </formComponent>
+              <formComponent name="" id="524" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.HtmlDisplayFormComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="true" externalParametrizationName="HTML display" externalParametrizationMode="include">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.HtmlDisplayFormComponent">
+                      <void property="displayedText">
+                        <string>&lt;html&gt;
+${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
+&lt;b&gt;${compiler:mac.libreoffice.downloadfile}&lt;/b&gt; + " in " + &lt;b&gt;${installer:sys.downloadsDir}&lt;/b&gt;
+&lt;/html&gt;
+
+</string>
+                      </void>
+                      <void property="fillVertical">
+                        <boolean>true</boolean>
+                      </void>
+                      <void property="textSource">
+                        <object class="java.lang.Enum" method="valueOf">
+                          <class>com.install4j.runtime.beans.screens.components.TextSource</class>
+                          <string>DIRECT</string>
+                        </object>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames>
+                  <propertyName>textSource</propertyName>
+                  <propertyName>displayedText</propertyName>
+                  <propertyName>displayedTextFile</propertyName>
+                  <propertyName>variableName</propertyName>
+                </externalParametrizationPropertyNames>
+              </formComponent>
+              <formComponent name="" id="525" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.ConsoleHandlerFormComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.ConsoleHandlerFormComponent">
+                      <void property="consoleScript">
+                        <object class="com.install4j.api.beans.ScriptProperty">
+                          <void property="value">
+                            <string>console.waitForEnter();
+return true;
+</string>
+                          </void>
+                        </object>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames />
+              </formComponent>
+            </formComponents>
           </screen>
-          <screen name="" id="369" customizedId="" beanClass="com.install4j.runtime.beans.screens.AdditionalConfirmationsScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
+          <screen name="" id="369" customizedId="" beanClass="com.install4j.runtime.beans.screens.AdditionalConfirmationsScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" styleId="" rollbackBarrier="false" rollbackBarrierExitCode="1" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
                 <object class="com.install4j.runtime.beans.screens.AdditionalConfirmationsScreen" />
               </java>
             </serializedBean>
+            <styleOverrides />
             <condition />
             <validation />
             <preActivation />
             <postActivation />
             <actions />
             <formComponents>
-              <formComponent name="Add a desktop link" id="370" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.CheckboxComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+              <formComponent name="" id="530" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="10" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent">
+                      <void property="labelText">
+                        <string>${form:confirmationMessage}</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript>!context.isConsole()</visibilityScript>
+                <externalParametrizationPropertyNames />
+              </formComponent>
+              <formComponent name="Add a desktop link" id="370" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.CheckboxComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.formcomponents.CheckboxComponent">
@@ -1649,8 +1984,9 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
                 </serializedBean>
                 <initScript />
                 <visibilityScript />
+                <externalParametrizationPropertyNames />
               </formComponent>
-              <formComponent name="Add an executable to the dock" id="372" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.CheckboxComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+              <formComponent name="Add an executable to the dock" id="372" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.CheckboxComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.formcomponents.CheckboxComponent">
@@ -1668,8 +2004,9 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
                 </serializedBean>
                 <initScript />
                 <visibilityScript>Util.isMacOS()</visibilityScript>
+                <externalParametrizationPropertyNames />
               </formComponent>
-              <formComponent name="Create a quick launch icon" id="374" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.CheckboxComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+              <formComponent name="Create a quick launch icon" id="374" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.CheckboxComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.formcomponents.CheckboxComponent">
@@ -1687,21 +2024,23 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
                 </serializedBean>
                 <initScript />
                 <visibilityScript>Util.isWindows()</visibilityScript>
+                <externalParametrizationPropertyNames />
               </formComponent>
             </formComponents>
           </screen>
-          <screen name="" id="8" customizedId="" beanClass="com.install4j.runtime.beans.screens.InstallationScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="true" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
+          <screen name="" id="8" customizedId="" beanClass="com.install4j.runtime.beans.screens.InstallationScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" styleId="" rollbackBarrier="true" rollbackBarrierExitCode="1" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
                 <object class="com.install4j.runtime.beans.screens.InstallationScreen" />
               </java>
             </serializedBean>
+            <styleOverrides />
             <condition />
             <validation />
             <preActivation />
             <postActivation />
             <actions>
-              <action name="" id="9" customizedId="" beanClass="com.install4j.runtime.beans.actions.InstallFilesAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" multiExec="false" failureStrategy="2" errorMessage="${i18n:FileCorrupted}">
+              <action name="" id="9" customizedId="" beanClass="com.install4j.runtime.beans.actions.InstallFilesAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="2" errorMessage="${i18n:FileCorrupted}">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.InstallFilesAction" />
@@ -1709,10 +2048,13 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
                 </serializedBean>
                 <condition />
               </action>
-              <action name="" id="10" customizedId="" beanClass="com.install4j.runtime.beans.actions.desktop.CreateProgramGroupAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+              <action name="" id="10" customizedId="" beanClass="com.install4j.runtime.beans.actions.desktop.CreateProgramGroupAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="1" errorMessage="">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.desktop.CreateProgramGroupAction">
+                      <void property="addUninstaller">
+                        <boolean>true</boolean>
+                      </void>
                       <void property="uninstallerMenuName">
                         <string>${i18n:UninstallerMenuEntry(${compiler:sys.fullName})}</string>
                       </void>
@@ -1721,7 +2063,7 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
                 </serializedBean>
                 <condition>!context.getBooleanVariable("sys.programGroupDisabled")</condition>
               </action>
-              <action name="" id="11" customizedId="" beanClass="com.install4j.runtime.beans.actions.desktop.RegisterAddRemoveAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+              <action name="" id="11" customizedId="" beanClass="com.install4j.runtime.beans.actions.desktop.RegisterAddRemoveAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="1" errorMessage="">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.desktop.RegisterAddRemoveAction">
@@ -1733,7 +2075,7 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
                 </serializedBean>
                 <condition />
               </action>
-              <action name="" id="368" customizedId="" beanClass="com.install4j.runtime.beans.actions.desktop.CreateDesktopLinkAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+              <action name="" id="368" customizedId="" beanClass="com.install4j.runtime.beans.actions.desktop.CreateDesktopLinkAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="1" errorMessage="">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.desktop.CreateDesktopLinkAction">
@@ -1750,7 +2092,7 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
                 </serializedBean>
                 <condition>context.getBooleanVariable("createDesktopLinkAction")</condition>
               </action>
-              <action name="" id="371" customizedId="" beanClass="com.install4j.runtime.beans.actions.desktop.AddToDockAction" enabled="true" commentSet="false" comment="" actionElevationType="none" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+              <action name="" id="371" customizedId="" beanClass="com.install4j.runtime.beans.actions.desktop.AddToDockAction" enabled="true" commentSet="false" comment="" actionElevationType="none" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="1" errorMessage="">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.desktop.AddToDockAction">
@@ -1764,24 +2106,7 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
                 </serializedBean>
                 <condition>context.getBooleanVariable("addToDockAction")</condition>
               </action>
-              <action name="" id="373" customizedId="" beanClass="com.install4j.runtime.beans.actions.desktop.CreateQuicklaunchIconAction" enabled="true" commentSet="false" comment="" actionElevationType="none" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
-                <serializedBean>
-                  <java class="java.beans.XMLDecoder">
-                    <object class="com.install4j.runtime.beans.actions.desktop.CreateQuicklaunchIconAction">
-                      <void property="description">
-                        <string>${compiler:sys.fullName}</string>
-                      </void>
-                      <void property="file">
-                        <object class="java.io.File">
-                          <string>j-lawyer-Client</string>
-                        </object>
-                      </void>
-                    </object>
-                  </java>
-                </serializedBean>
-                <condition>context.getBooleanVariable("createQuicklaunchIconAction")</condition>
-              </action>
-              <action name="Set JLAWYERCLIENTHOME on Windows" id="551" customizedId="" beanClass="com.install4j.runtime.beans.actions.misc.ModifyEnvironmentVariableAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+              <action name="Set JLAWYERCLIENTHOME on Windows" id="551" customizedId="" beanClass="com.install4j.runtime.beans.actions.misc.ModifyEnvironmentVariableAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="1" errorMessage="">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.misc.ModifyEnvironmentVariableAction">
@@ -1800,23 +2125,32 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
                 <condition />
               </action>
             </actions>
-            <formComponents />
+            <formComponents>
+              <formComponent name="" id="553" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.ProgressComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.ProgressComponent">
+                      <void property="initialStatusMessage">
+                        <string>${i18n:WizardPreparing}</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames />
+              </formComponent>
+            </formComponents>
           </screen>
-          <screen name="Display default credentials" id="587" customizedId="" beanClass="com.install4j.runtime.beans.screens.CustomizableInfoScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
+          <screen name="Display default credentials" id="587" customizedId="" beanClass="com.install4j.runtime.beans.screens.FormScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" styleId="" rollbackBarrier="false" rollbackBarrierExitCode="1" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
-                <object class="com.install4j.runtime.beans.screens.CustomizableInfoScreen">
-                  <void property="displayedText">
-                    <string>${i18n:screens.credentials.text}</string>
+                <object class="com.install4j.runtime.beans.screens.FormScreen">
+                  <void property="scrollable">
+                    <boolean>false</boolean>
                   </void>
                   <void property="subTitle">
                     <string>${i18n:screens.credentials.subtitle}</string>
-                  </void>
-                  <void property="textSource">
-                    <object class="java.lang.Enum" method="valueOf">
-                      <class>com.install4j.runtime.beans.screens.components.TextSource</class>
-                      <string>DIRECT</string>
-                    </object>
                   </void>
                   <void property="title">
                     <string>${i18n:screens.credentials.title}</string>
@@ -1824,29 +2158,111 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
                 </object>
               </java>
             </serializedBean>
+            <styleOverrides />
             <condition>Boolean.FALSE.equals(context.getVariable("sys.confirmedUpdateInstallation"))</condition>
             <validation />
             <preActivation />
             <postActivation />
             <actions />
-            <formComponents />
+            <formComponents>
+              <formComponent name="" id="590" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="true" externalParametrizationName="Header" externalParametrizationMode="include">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent">
+                      <void property="hideIfBlank">
+                        <boolean>true</boolean>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript>!context.isConsole()</visibilityScript>
+                <externalParametrizationPropertyNames>
+                  <propertyName>labelText</propertyName>
+                </externalParametrizationPropertyNames>
+              </formComponent>
+              <formComponent name="" id="591" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.HtmlDisplayFormComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="true" externalParametrizationName="HTML display" externalParametrizationMode="include">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.HtmlDisplayFormComponent">
+                      <void property="displayedText">
+                        <string>${i18n:screens.credentials.text}</string>
+                      </void>
+                      <void property="fillVertical">
+                        <boolean>true</boolean>
+                      </void>
+                      <void property="textSource">
+                        <object class="java.lang.Enum" method="valueOf">
+                          <class>com.install4j.runtime.beans.screens.components.TextSource</class>
+                          <string>DIRECT</string>
+                        </object>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames>
+                  <propertyName>textSource</propertyName>
+                  <propertyName>displayedText</propertyName>
+                  <propertyName>displayedTextFile</propertyName>
+                  <propertyName>variableName</propertyName>
+                </externalParametrizationPropertyNames>
+              </formComponent>
+              <formComponent name="" id="592" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.ConsoleHandlerFormComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.ConsoleHandlerFormComponent">
+                      <void property="consoleScript">
+                        <object class="com.install4j.api.beans.ScriptProperty">
+                          <void property="value">
+                            <string>console.waitForEnter();
+return true;
+</string>
+                          </void>
+                        </object>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames />
+              </formComponent>
+            </formComponents>
           </screen>
-          <screen name="" id="12" customizedId="" beanClass="com.install4j.runtime.beans.screens.FinishedScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" backButton="2" finishScreen="true" wizardIndexChangeType="unchanged" wizardIndexKey="">
+          <screen name="" id="12" customizedId="" beanClass="com.install4j.runtime.beans.screens.FinishedScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" styleId="649" rollbackBarrier="false" rollbackBarrierExitCode="1" backButton="2" finishScreen="true" wizardIndexChangeType="unchanged" wizardIndexKey="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
                 <object class="com.install4j.runtime.beans.screens.FinishedScreen" />
               </java>
             </serializedBean>
+            <styleOverrides />
             <condition />
             <validation />
             <preActivation />
             <postActivation />
             <actions />
-            <formComponents />
+            <formComponents>
+              <formComponent name="" id="594" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="10" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent">
+                      <void property="labelText">
+                        <string>${form:finishedMessage}</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames />
+              </formComponent>
+            </formComponents>
           </screen>
         </screens>
       </application>
-      <application name="" id="uninstaller" customizedId="" beanClass="com.install4j.runtime.beans.applications.UninstallerApplication" enabled="true" commentSet="false" comment="" actionElevationType="none" fileset="" customIcnsFile="" customIcoFile="" macEntitlementsFile="" automaticLauncherIntegration="false" launchMode="startupFirstWindow" launchInNewProcess="false" launchSchedule="updateSchedule" allLaunchers="true">
+      <application name="" id="uninstaller" customizedId="" beanClass="com.install4j.runtime.beans.applications.UninstallerApplication" enabled="true" commentSet="false" comment="" actionElevationType="none" styleId="" fileset="" customIcnsFile="" customIcoFile="" macEntitlementsFile="" automaticLauncherIntegration="false" launchMode="startupFirstWindow" launchInNewProcess="false" launchSchedule="updateSchedule" allLaunchers="true">
         <serializedBean>
           <java class="java.beans.XMLDecoder">
             <object class="com.install4j.runtime.beans.applications.UninstallerApplication">
@@ -1859,21 +2275,26 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
             </object>
           </java>
         </serializedBean>
+        <styleOverrides />
+        <customScript mode="1" file="">
+          <content />
+        </customScript>
         <launcherIds />
         <variables />
         <startup>
-          <screen name="" id="14" customizedId="" beanClass="com.install4j.runtime.beans.screens.StartupScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
+          <screen name="" id="14" customizedId="" beanClass="com.install4j.runtime.beans.screens.StartupScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" styleId="" rollbackBarrier="false" rollbackBarrierExitCode="0" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
                 <object class="com.install4j.runtime.beans.screens.StartupScreen" />
               </java>
             </serializedBean>
+            <styleOverrides />
             <condition />
             <validation />
             <preActivation />
             <postActivation />
             <actions>
-              <action name="" id="20" customizedId="" beanClass="com.install4j.runtime.beans.actions.misc.LoadResponseFileAction" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+              <action name="" id="20" customizedId="" beanClass="com.install4j.runtime.beans.actions.misc.LoadResponseFileAction" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="1" errorMessage="">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.misc.LoadResponseFileAction" />
@@ -1881,7 +2302,7 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
                 </serializedBean>
                 <condition />
               </action>
-              <action name="" id="21" customizedId="" beanClass="com.install4j.runtime.beans.actions.misc.RequireInstallerPrivilegesAction" enabled="true" commentSet="false" comment="" actionElevationType="none" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+              <action name="" id="21" customizedId="" beanClass="com.install4j.runtime.beans.actions.misc.RequireInstallerPrivilegesAction" enabled="true" commentSet="false" comment="" actionElevationType="none" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="1" errorMessage="">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.misc.RequireInstallerPrivilegesAction" />
@@ -1894,31 +2315,68 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
           </screen>
         </startup>
         <screens>
-          <screen name="" id="15" customizedId="" beanClass="com.install4j.runtime.beans.screens.UninstallWelcomeScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
+          <screen name="" id="15" customizedId="" beanClass="com.install4j.runtime.beans.screens.UninstallWelcomeScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" styleId="649" rollbackBarrier="false" rollbackBarrierExitCode="1" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
                 <object class="com.install4j.runtime.beans.screens.UninstallWelcomeScreen" />
               </java>
             </serializedBean>
+            <styleOverrides />
             <condition />
             <validation />
             <preActivation />
             <postActivation />
             <actions />
-            <formComponents />
+            <formComponents>
+              <formComponent name="" id="600" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="10" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent">
+                      <void property="labelText">
+                        <string>${form:welcomeMessage}</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript>!context.isConsole()</visibilityScript>
+                <externalParametrizationPropertyNames />
+              </formComponent>
+              <formComponent name="" id="601" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.ConsoleHandlerFormComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.ConsoleHandlerFormComponent">
+                      <void property="consoleScript">
+                        <object class="com.install4j.api.beans.ScriptProperty">
+                          <void property="value">
+                            <string>String message = context.getMessage("ConfirmUninstall", context.getApplicationName());
+return console.askYesNo(message, true);
+</string>
+                          </void>
+                        </object>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames />
+              </formComponent>
+            </formComponents>
           </screen>
-          <screen name="" id="16" customizedId="" beanClass="com.install4j.runtime.beans.screens.UninstallationScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
+          <screen name="" id="16" customizedId="" beanClass="com.install4j.runtime.beans.screens.UninstallationScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" styleId="" rollbackBarrier="false" rollbackBarrierExitCode="1" backButton="2" finishScreen="false" wizardIndexChangeType="unchanged" wizardIndexKey="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
                 <object class="com.install4j.runtime.beans.screens.UninstallationScreen" />
               </java>
             </serializedBean>
+            <styleOverrides />
             <condition />
             <validation />
             <preActivation />
             <postActivation />
             <actions>
-              <action name="" id="17" customizedId="" beanClass="com.install4j.runtime.beans.actions.UninstallFilesAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+              <action name="" id="17" customizedId="" beanClass="com.install4j.runtime.beans.actions.UninstallFilesAction" enabled="true" commentSet="false" comment="" actionElevationType="elevated" rollbackBarrier="false" rollbackBarrierExitCode="1" multiExec="false" failureStrategy="1" errorMessage="">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
                     <object class="com.install4j.runtime.beans.actions.UninstallFilesAction" />
@@ -1927,14 +2385,30 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
                 <condition />
               </action>
             </actions>
-            <formComponents />
+            <formComponents>
+              <formComponent name="" id="605" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.ProgressComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.ProgressComponent">
+                      <void property="initialStatusMessage">
+                        <string>${i18n:UninstallerPreparing}</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames />
+              </formComponent>
+            </formComponents>
           </screen>
-          <screen name="" id="19" customizedId="" beanClass="com.install4j.runtime.beans.screens.UninstallFailureScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" backButton="2" finishScreen="true" wizardIndexChangeType="unchanged" wizardIndexKey="">
+          <screen name="" id="19" customizedId="" beanClass="com.install4j.runtime.beans.screens.UninstallFailureScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" styleId="" rollbackBarrier="false" rollbackBarrierExitCode="1" backButton="2" finishScreen="true" wizardIndexChangeType="unchanged" wizardIndexKey="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
                 <object class="com.install4j.runtime.beans.screens.UninstallFailureScreen" />
               </java>
             </serializedBean>
+            <styleOverrides />
             <condition />
             <validation />
             <preActivation />
@@ -1942,25 +2416,489 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
             <actions />
             <formComponents />
           </screen>
-          <screen name="" id="18" customizedId="" beanClass="com.install4j.runtime.beans.screens.UninstallSuccessScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" rollbackBarrier="false" backButton="2" finishScreen="true" wizardIndexChangeType="unchanged" wizardIndexKey="">
+          <screen name="" id="18" customizedId="" beanClass="com.install4j.runtime.beans.screens.UninstallSuccessScreen" enabled="true" commentSet="false" comment="" actionElevationType="inherit" styleId="649" rollbackBarrier="false" rollbackBarrierExitCode="1" backButton="2" finishScreen="true" wizardIndexChangeType="unchanged" wizardIndexKey="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
                 <object class="com.install4j.runtime.beans.screens.UninstallSuccessScreen" />
               </java>
             </serializedBean>
+            <styleOverrides />
             <condition />
             <validation />
             <preActivation />
             <postActivation />
             <actions />
-            <formComponents />
+            <formComponents>
+              <formComponent name="" id="608" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="10" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent">
+                      <void property="labelText">
+                        <string>${form:successMessage}</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames />
+              </formComponent>
+            </formComponents>
           </screen>
         </screens>
       </application>
     </applications>
+    <styles defaultStyleId="643">
+      <style name="Standard" id="643" customizedId="" beanClass="com.install4j.runtime.beans.styles.FormStyle" enabled="true" commentSet="false" comment="">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.styles.FormStyle" />
+          </java>
+        </serializedBean>
+        <formComponents>
+          <formComponent name="Header" id="644" customizedId="" beanClass="com.install4j.runtime.beans.styles.NestedStyleComponent" enabled="true" commentSet="false" comment="" insetTop="0" insetLeft="" insetBottom="0" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.styles.NestedStyleComponent">
+                  <void property="styleId">
+                    <string>656</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <initScript />
+            <visibilityScript />
+            <externalParametrizationPropertyNames />
+          </formComponent>
+          <group name="Main" id="645" customizedId="" beanClass="com.install4j.runtime.beans.groups.VerticalFormComponentGroup" enabled="true" commentSet="false" comment="" actionElevationType="inherit" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.groups.VerticalFormComponentGroup" />
+              </java>
+            </serializedBean>
+            <beans>
+              <formComponent name="" id="646" customizedId="" beanClass="com.install4j.runtime.beans.styles.ContentComponent" enabled="true" commentSet="false" comment="" insetTop="10" insetLeft="20" insetBottom="10" insetRight="20" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.styles.ContentComponent" />
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames />
+              </formComponent>
+              <formComponent name="Watermark" id="647" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.SeparatorComponent" enabled="true" commentSet="false" comment="" insetTop="0" insetLeft="5" insetBottom="0" insetRight="" resetInitOnPrevious="false" useExternalParametrization="true" externalParametrizationName="Custom watermark" externalParametrizationMode="include">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.SeparatorComponent">
+                      <void property="enabledTitleText">
+                        <boolean>false</boolean>
+                      </void>
+                      <void property="labelText">
+                        <string>install4j</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames>
+                  <propertyName>labelText</propertyName>
+                </externalParametrizationPropertyNames>
+              </formComponent>
+              <formComponent name="Footer" id="648" customizedId="" beanClass="com.install4j.runtime.beans.styles.NestedStyleComponent" enabled="true" commentSet="false" comment="" insetTop="0" insetLeft="" insetBottom="0" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.styles.NestedStyleComponent">
+                      <void property="styleId">
+                        <string>660</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames />
+              </formComponent>
+            </beans>
+            <externalParametrizationPropertyNames />
+          </group>
+        </formComponents>
+      </style>
+      <style name="Banner" id="649" customizedId="" beanClass="com.install4j.runtime.beans.styles.FormStyle" enabled="true" commentSet="false" comment="">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.styles.FormStyle" />
+          </java>
+        </serializedBean>
+        <formComponents>
+          <group name="" id="650" customizedId="" beanClass="com.install4j.runtime.beans.groups.VerticalFormComponentGroup" enabled="true" commentSet="false" comment="" actionElevationType="inherit" useExternalParametrization="true" externalParametrizationName="Customize banner image" externalParametrizationMode="include">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.groups.VerticalFormComponentGroup">
+                  <void property="backgroundColor">
+                    <object class="java.awt.Color">
+                      <int>255</int>
+                      <int>255</int>
+                      <int>255</int>
+                      <int>255</int>
+                    </object>
+                  </void>
+                  <void property="borderSides">
+                    <object class="com.install4j.runtime.beans.formcomponents.BorderSides">
+                      <void property="bottom">
+                        <boolean>true</boolean>
+                      </void>
+                    </object>
+                  </void>
+                  <void property="imageEdgeBackgroundColor">
+                    <object class="java.awt.Color">
+                      <int>25</int>
+                      <int>143</int>
+                      <int>220</int>
+                      <int>255</int>
+                    </object>
+                  </void>
+                  <void property="imageEdgeBorder">
+                    <boolean>true</boolean>
+                  </void>
+                  <void property="imageFile">
+                    <object class="com.install4j.api.beans.ExternalFile">
+                      <string>${compiler:sys.install4jHome}/resource/styles/wizard.png</string>
+                    </object>
+                  </void>
+                  <void property="insets">
+                    <object class="java.awt.Insets">
+                      <int>5</int>
+                      <int>10</int>
+                      <int>10</int>
+                      <int>10</int>
+                    </object>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <beans>
+              <formComponent name="" id="651" customizedId="" beanClass="com.install4j.runtime.beans.styles.ScreenTitleComponent" enabled="true" commentSet="false" comment="" insetTop="0" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.styles.ScreenTitleComponent">
+                      <void property="labelFontSizePercent">
+                        <int>130</int>
+                      </void>
+                      <void property="labelFontStyle">
+                        <object class="java.lang.Enum" method="valueOf">
+                          <class>com.install4j.runtime.beans.formcomponents.FontStyle</class>
+                          <string>BOLD</string>
+                        </object>
+                      </void>
+                      <void property="labelFontType">
+                        <object class="java.lang.Enum" method="valueOf">
+                          <class>com.install4j.runtime.beans.formcomponents.FontType</class>
+                          <string>DERIVED</string>
+                        </object>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames />
+              </formComponent>
+              <formComponent name="" id="652" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.SeparatorComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.SeparatorComponent" />
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames />
+              </formComponent>
+              <formComponent name="" id="653" customizedId="" beanClass="com.install4j.runtime.beans.styles.ContentComponent" enabled="true" commentSet="false" comment="" insetTop="10" insetLeft="" insetBottom="0" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.styles.ContentComponent" />
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+                <externalParametrizationPropertyNames />
+              </formComponent>
+            </beans>
+            <externalParametrizationPropertyNames>
+              <propertyName>imageAnchor</propertyName>
+              <propertyName>imageEdgeBackgroundColor</propertyName>
+              <propertyName>imageFile</propertyName>
+            </externalParametrizationPropertyNames>
+          </group>
+          <formComponent name="" id="654" customizedId="" beanClass="com.install4j.runtime.beans.styles.NestedStyleComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="0" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.styles.NestedStyleComponent">
+                  <void property="styleId">
+                    <string>660</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <initScript />
+            <visibilityScript />
+            <externalParametrizationPropertyNames />
+          </formComponent>
+        </formComponents>
+      </style>
+      <group name="Style components" id="655" customizedId="" beanClass="com.install4j.runtime.beans.groups.StyleGroup" enabled="true" commentSet="false" comment="" actionElevationType="inherit">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.groups.StyleGroup" />
+          </java>
+        </serializedBean>
+        <beans>
+          <style name="Standard header" id="656" customizedId="" beanClass="com.install4j.runtime.beans.styles.FormStyle" enabled="true" commentSet="false" comment="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.styles.FormStyle">
+                  <void property="fillVertical">
+                    <boolean>false</boolean>
+                  </void>
+                  <void property="standalone">
+                    <boolean>false</boolean>
+                  </void>
+                  <void property="verticalAnchor">
+                    <object class="java.lang.Enum" method="valueOf">
+                      <class>com.install4j.api.beans.Anchor</class>
+                      <string>NORTH</string>
+                    </object>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <formComponents>
+              <group name="" id="657" customizedId="" beanClass="com.install4j.runtime.beans.groups.VerticalFormComponentGroup" enabled="true" commentSet="false" comment="" actionElevationType="inherit" useExternalParametrization="true" externalParametrizationName="Customize title bar" externalParametrizationMode="include">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.groups.VerticalFormComponentGroup">
+                      <void property="backgroundColor">
+                        <object class="java.awt.Color">
+                          <int>255</int>
+                          <int>255</int>
+                          <int>255</int>
+                          <int>255</int>
+                        </object>
+                      </void>
+                      <void property="borderSides">
+                        <object class="com.install4j.runtime.beans.formcomponents.BorderSides">
+                          <void property="bottom">
+                            <boolean>true</boolean>
+                          </void>
+                        </object>
+                      </void>
+                      <void property="imageAnchor">
+                        <object class="java.lang.Enum" method="valueOf">
+                          <class>com.install4j.api.beans.Anchor</class>
+                          <string>NORTHEAST</string>
+                        </object>
+                      </void>
+                      <void property="imageEdgeBorderWidth">
+                        <int>2</int>
+                      </void>
+                      <void property="imageFile">
+                        <object class="com.install4j.api.beans.ExternalFile">
+                          <string>icon:${installer:sys.installerApplicationMode}_header.png</string>
+                        </object>
+                      </void>
+                      <void property="imageInsets">
+                        <object class="java.awt.Insets">
+                          <int>0</int>
+                          <int>5</int>
+                          <int>1</int>
+                          <int>1</int>
+                        </object>
+                      </void>
+                      <void property="insets">
+                        <object class="java.awt.Insets">
+                          <int>0</int>
+                          <int>20</int>
+                          <int>0</int>
+                          <int>10</int>
+                        </object>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <beans>
+                  <formComponent name="Title" id="658" customizedId="" beanClass="com.install4j.runtime.beans.styles.ScreenTitleComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                    <serializedBean>
+                      <java class="java.beans.XMLDecoder">
+                        <object class="com.install4j.runtime.beans.styles.ScreenTitleComponent">
+                          <void property="labelFontStyle">
+                            <object class="java.lang.Enum" method="valueOf">
+                              <class>com.install4j.runtime.beans.formcomponents.FontStyle</class>
+                              <string>BOLD</string>
+                            </object>
+                          </void>
+                          <void property="labelFontType">
+                            <object class="java.lang.Enum" method="valueOf">
+                              <class>com.install4j.runtime.beans.formcomponents.FontType</class>
+                              <string>DERIVED</string>
+                            </object>
+                          </void>
+                        </object>
+                      </java>
+                    </serializedBean>
+                    <initScript />
+                    <visibilityScript />
+                    <externalParametrizationPropertyNames />
+                  </formComponent>
+                  <formComponent name="Subtitle" id="659" customizedId="" beanClass="com.install4j.runtime.beans.styles.ScreenTitleComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="8" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                    <serializedBean>
+                      <java class="java.beans.XMLDecoder">
+                        <object class="com.install4j.runtime.beans.styles.ScreenTitleComponent">
+                          <void property="titleType">
+                            <object class="java.lang.Enum" method="valueOf">
+                              <class>com.install4j.runtime.beans.styles.TitleType</class>
+                              <string>SUB_TITLE</string>
+                            </object>
+                          </void>
+                        </object>
+                      </java>
+                    </serializedBean>
+                    <initScript />
+                    <visibilityScript />
+                    <externalParametrizationPropertyNames />
+                  </formComponent>
+                </beans>
+                <externalParametrizationPropertyNames>
+                  <propertyName>backgroundColor</propertyName>
+                  <propertyName>foregroundColor</propertyName>
+                  <propertyName>imageAnchor</propertyName>
+                  <propertyName>imageFile</propertyName>
+                  <propertyName>imageOverlap</propertyName>
+                </externalParametrizationPropertyNames>
+              </group>
+            </formComponents>
+          </style>
+          <style name="Standard footer" id="660" customizedId="" beanClass="com.install4j.runtime.beans.styles.FormStyle" enabled="true" commentSet="false" comment="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.styles.FormStyle">
+                  <void property="fillVertical">
+                    <boolean>false</boolean>
+                  </void>
+                  <void property="standalone">
+                    <boolean>false</boolean>
+                  </void>
+                  <void property="verticalAnchor">
+                    <object class="java.lang.Enum" method="valueOf">
+                      <class>com.install4j.api.beans.Anchor</class>
+                      <string>SOUTH</string>
+                    </object>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <formComponents>
+              <group name="" id="661" customizedId="" beanClass="com.install4j.runtime.beans.groups.HorizontalFormComponentGroup" enabled="true" commentSet="false" comment="" actionElevationType="inherit" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.groups.HorizontalFormComponentGroup">
+                      <void property="alignFirstLabel">
+                        <boolean>false</boolean>
+                      </void>
+                      <void property="insets">
+                        <object class="java.awt.Insets">
+                          <int>3</int>
+                          <int>5</int>
+                          <int>8</int>
+                          <int>5</int>
+                        </object>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <beans>
+                  <formComponent name="" id="662" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.SpringComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                    <serializedBean>
+                      <java class="java.beans.XMLDecoder">
+                        <object class="com.install4j.runtime.beans.formcomponents.SpringComponent" />
+                      </java>
+                    </serializedBean>
+                    <initScript />
+                    <visibilityScript />
+                    <externalParametrizationPropertyNames />
+                  </formComponent>
+                  <formComponent name="Back button" id="663" customizedId="" beanClass="com.install4j.runtime.beans.styles.StandardControlButtonComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                    <serializedBean>
+                      <java class="java.beans.XMLDecoder">
+                        <object class="com.install4j.runtime.beans.styles.StandardControlButtonComponent">
+                          <void property="buttonText">
+                            <string>&lt; ${i18n:ButtonBack}</string>
+                          </void>
+                          <void property="controlButtonType">
+                            <object class="java.lang.Enum" method="valueOf">
+                              <class>com.install4j.api.context.ControlButtonType</class>
+                              <string>PREVIOUS</string>
+                            </object>
+                          </void>
+                        </object>
+                      </java>
+                    </serializedBean>
+                    <initScript />
+                    <visibilityScript />
+                    <externalParametrizationPropertyNames />
+                  </formComponent>
+                  <formComponent name="Next button" id="664" customizedId="" beanClass="com.install4j.runtime.beans.styles.StandardControlButtonComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                    <serializedBean>
+                      <java class="java.beans.XMLDecoder">
+                        <object class="com.install4j.runtime.beans.styles.StandardControlButtonComponent">
+                          <void property="buttonText">
+                            <string>${i18n:ButtonNext} &gt;</string>
+                          </void>
+                          <void property="controlButtonType">
+                            <object class="java.lang.Enum" method="valueOf">
+                              <class>com.install4j.api.context.ControlButtonType</class>
+                              <string>NEXT</string>
+                            </object>
+                          </void>
+                        </object>
+                      </java>
+                    </serializedBean>
+                    <initScript />
+                    <visibilityScript />
+                    <externalParametrizationPropertyNames />
+                  </formComponent>
+                  <formComponent name="Cancel button" id="665" customizedId="" beanClass="com.install4j.runtime.beans.styles.StandardControlButtonComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="5" insetBottom="" insetRight="" resetInitOnPrevious="false" useExternalParametrization="false" externalParametrizationName="" externalParametrizationMode="all">
+                    <serializedBean>
+                      <java class="java.beans.XMLDecoder">
+                        <object class="com.install4j.runtime.beans.styles.StandardControlButtonComponent">
+                          <void property="buttonText">
+                            <string>${i18n:ButtonCancel}</string>
+                          </void>
+                          <void property="controlButtonType">
+                            <object class="java.lang.Enum" method="valueOf">
+                              <class>com.install4j.api.context.ControlButtonType</class>
+                              <string>CANCEL</string>
+                            </object>
+                          </void>
+                        </object>
+                      </java>
+                    </serializedBean>
+                    <initScript />
+                    <visibilityScript />
+                    <externalParametrizationPropertyNames />
+                  </formComponent>
+                </beans>
+                <externalParametrizationPropertyNames />
+              </group>
+            </formComponents>
+          </style>
+        </beans>
+      </group>
+    </styles>
   </installerGui>
   <mediaSets>
-    <windows name="Windows-x86" id="28" customizedId="" mediaFileName="" installDir="${compiler:sys.shortName}" overridePrincipalLanguage="false" jreBitType="32" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="false" includedJRE="windows-x86-1.8.0_181" manualJREEntry="false" bundleType="1" jreURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" customInstallBaseDir="" contentFilesType="1" verifyIntegrity="true">
+    <windows name="Windows-x86" id="28" customizedId="" mediaFileName="" installDir="${compiler:sys.shortName}" overridePrincipalLanguage="false" jreBitType="32" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="false" includedJRE="windows-x86-1.8.0_192" manualJREEntry="false" bundleType="1" jreURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" customInstallBaseDir="" contentFilesType="1" verifyIntegrity="true">
       <excludedComponents />
       <includedDownloadableComponents />
       <excludedLaunchers />
@@ -1973,7 +2911,7 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
         <customAttributes />
       </autoUpdate>
     </windows>
-    <windows name="Windows-x64" id="29" customizedId="" mediaFileName="" installDir="${compiler:sys.shortName}" overridePrincipalLanguage="false" jreBitType="64" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="false" includedJRE="windows-amd64-1.8.0_181" manualJREEntry="false" bundleType="1" jreURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" customInstallBaseDir="" contentFilesType="1" verifyIntegrity="true">
+    <windows name="Windows-x64" id="29" customizedId="" mediaFileName="" installDir="${compiler:sys.shortName}" overridePrincipalLanguage="false" jreBitType="64" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="false" includedJRE="windows-amd64-1.8.0_192" manualJREEntry="false" bundleType="1" jreURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" customInstallBaseDir="" contentFilesType="1" verifyIntegrity="true">
       <excludedComponents />
       <includedDownloadableComponents />
       <excludedLaunchers />
@@ -1986,7 +2924,7 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
         <customAttributes />
       </autoUpdate>
     </windows>
-    <macos name="Mac OS X Single Bundle" id="30" customizedId="" mediaFileName="" installDir="${compiler:sys.fullName}" overridePrincipalLanguage="false" jreBitType="all" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="false" includedJRE="macosx-amd64-1.8.0_181" manualJREEntry="false" bundleType="1" jreURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" appleJre="false" requiredVmIdPrefix="" customInstallBaseDir="" contentFilesType="1" installerName="${i18n:InstallerName(${compiler:sys.fullName})}" volumeName="${compiler:sys.shortName}" compressDmg="false" launcherId="27">
+    <macos name="Mac OS X Single Bundle" id="30" customizedId="" mediaFileName="" installDir="${compiler:sys.fullName}" overridePrincipalLanguage="false" jreBitType="all" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="false" includedJRE="macosx-amd64-1.8.0_192" manualJREEntry="false" bundleType="1" jreURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" requiredVmIdPrefix="" customInstallBaseDir="" contentFilesType="1" installerName="${i18n:InstallerName(${compiler:sys.fullName})}" volumeName="${compiler:sys.shortName}" compressDmg="false" launcherId="27">
       <excludedComponents />
       <includedDownloadableComponents />
       <excludedBeans />
@@ -2015,12 +2953,89 @@ ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
         <content />
       </installerScript>
     </unixInstaller>
+    <linuxDeb name="Linux Deb Archive" id="670" customizedId="" mediaFileName="" installDir="/opt/${compiler:sys.shortName}" overridePrincipalLanguage="false" jreBitType="all" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="true" includedJRE="" manualJREEntry="false" overwriteNeverAsConfigFiles="false" dependencies="openjdk-8-jre,libreoffice,libreoffice-l10n-de,libreoffice-help-de,unoconv" bzip="true" description="j-lawyer.org Client" maintainerEmail="info@j-lawyer.org" architectureSet="false" architecture="">
+      <excludedComponents />
+      <includedDownloadableComponents />
+      <excludedLaunchers />
+      <excludedBeans />
+      <overriddenPrincipalLanguage id="en" customLocalizationFile="" />
+      <exclude />
+      <variables />
+      <autoUpdate useMinUpdatableVersion="false" minUpdatableVersion="" useMaxUpdatableVersion="false" maxUpdatableVersion="">
+        <commentFiles />
+        <customAttributes />
+      </autoUpdate>
+      <preInstallScript mode="1" file="">
+        <content />
+      </preInstallScript>
+      <postInstallScript mode="3" file="../j-lawyer-releases/j-lawyer-client/add-to-desktop.sh">
+        <content>cp /opt/j-lawyer-client/j-lawyer-client.desktop /usr/share/applications/j-lawyer-client.desktop
+update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java</content>
+      </postInstallScript>
+      <preUninstallScript mode="1" file="">
+        <content />
+      </preUninstallScript>
+      <postUninstallScript mode="1" file="">
+        <content />
+      </postUninstallScript>
+    </linuxDeb>
+    <linuxRPM name="openSUSE RPM" id="678" customizedId="" mediaFileName="${compiler:sys.shortName}_openSUSE_${compiler:sys.platform}_${compiler:sys.version}" installDir="/opt/${compiler:sys.shortName}" overridePrincipalLanguage="false" jreBitType="all" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="true" includedJRE="" manualJREEntry="false" overwriteNeverAsConfigFiles="false" dependencies="java-1_8_0-openjdk libreoffice libreoffice-l10n-de unoconv" os="linux" arch="i386">
+      <excludedComponents />
+      <includedDownloadableComponents />
+      <excludedLaunchers />
+      <excludedBeans />
+      <overriddenPrincipalLanguage id="en" customLocalizationFile="" />
+      <exclude />
+      <variables />
+      <autoUpdate useMinUpdatableVersion="false" minUpdatableVersion="" useMaxUpdatableVersion="false" maxUpdatableVersion="">
+        <commentFiles />
+        <customAttributes />
+      </autoUpdate>
+      <preInstallScript mode="1" file="">
+        <content />
+      </preInstallScript>
+      <postInstallScript mode="3" file="">
+        <content>cp /opt/j-lawyer-client/j-lawyer-client.desktop /usr/share/applications/j-lawyer-client.desktop
+update-alternatives --set java /usr/lib64/jvm/jre-1.8.0-openjdk/bin/java</content>
+      </postInstallScript>
+      <preUninstallScript mode="1" file="">
+        <content />
+      </preUninstallScript>
+      <postUninstallScript mode="1" file="">
+        <content />
+      </postUninstallScript>
+    </linuxRPM>
+    <linuxRPM name="RedHat RPM" id="680" customizedId="" mediaFileName="${compiler:sys.shortName}_CentOS-Fedora-RedHat_${compiler:sys.platform}_${compiler:sys.version}" installDir="/opt/${compiler:sys.shortName}" overridePrincipalLanguage="false" jreBitType="all" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="true" includedJRE="" manualJREEntry="false" overwriteNeverAsConfigFiles="false" dependencies="java-1.8.0-openjdk libreoffice libreoffice-langpack-de unoconv" os="linux" arch="i386">
+      <excludedComponents />
+      <includedDownloadableComponents />
+      <excludedLaunchers />
+      <excludedBeans />
+      <overriddenPrincipalLanguage id="en" customLocalizationFile="" />
+      <exclude />
+      <variables />
+      <autoUpdate useMinUpdatableVersion="false" minUpdatableVersion="" useMaxUpdatableVersion="false" maxUpdatableVersion="">
+        <commentFiles />
+        <customAttributes />
+      </autoUpdate>
+      <preInstallScript mode="1" file="">
+        <content />
+      </preInstallScript>
+      <postInstallScript mode="3" file="">
+        <content>cp /opt/j-lawyer-client/j-lawyer-client.desktop /usr/share/applications/j-lawyer-client.desktop
+update-alternatives --set java /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181.b15-5.fc29.x86_64/jre/bin/java</content>
+      </postInstallScript>
+      <preUninstallScript mode="1" file="">
+        <content />
+      </preUninstallScript>
+      <postUninstallScript mode="1" file="">
+        <content />
+      </postUninstallScript>
+    </linuxRPM>
   </mediaSets>
   <buildIds buildAll="false">
-    <mediaSet refId="28" />
-    <mediaSet refId="29" />
-    <mediaSet refId="30" />
-    <mediaSet refId="31" />
+    <mediaSet refId="670" />
+    <mediaSet refId="678" />
+    <mediaSet refId="680" />
   </buildIds>
   <buildOptions verbose="true" faster="false" disableSigning="false" disableJreBundling="false" debug="false" />
 </install4j>
