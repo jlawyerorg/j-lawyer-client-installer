@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<install4j version="7.0.10" transformSequenceNumber="7">
-  <directoryPresets config="../j-lawyer-releases/j-lawyer-client/j-lawyer.org (Client).desktop" />
-  <application name="j-lawyer.org (Client)" distributionSourceDir="" applicationId="2679-5007-8596-7844" mediaDir="./media" mediaFilePattern="${compiler:sys.shortName}_${compiler:sys.platform}_${compiler:sys.version}" compression="9" lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" commonExternalFiles="false" createMd5Sums="true" shrinkRuntime="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="http://www.j-lawyer.org" version="1.9.1" allPathsRelative="true" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
+<install4j version="7.0.12" transformSequenceNumber="7">
+  <directoryPresets config="../j-lawyer-releases/j-lawyer-client/libjsb.so" />
+  <application name="j-lawyer.org (Client)" distributionSourceDir="" applicationId="2679-5007-8596-7844" mediaDir="./media" mediaFilePattern="${compiler:sys.shortName}_${compiler:sys.platform}_${compiler:sys.version}" compression="9" lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" commonExternalFiles="false" createMd5Sums="true" shrinkRuntime="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="http://www.j-lawyer.org" version="1.10.0" allPathsRelative="true" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
     <languages skipLanguageSelection="false" languageSelectionInPrincipalLanguage="false">
       <principalLanguage id="de" customLocalizationFile="./j-lawyer-installer-client-i18n.properties" />
       <additionalLanguages>
@@ -57,6 +57,10 @@
       <fileEntry mountPoint="24" file="../j-lawyer-releases/j-lawyer-client/run-ipv4.bat" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="false" overrideUninstallMode="false" />
       <fileEntry mountPoint="24" file="../j-lawyer-releases/j-lawyer-client/add-to-desktop.sh" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="false" overrideUninstallMode="false" />
       <fileEntry mountPoint="24" file="../j-lawyer-releases/j-lawyer-client/j-lawyer-client.desktop" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="false" overrideUninstallMode="false" />
+      <fileEntry mountPoint="24" file="../j-lawyer-releases/j-lawyer-client/jsb.dll" overwriteMode="1" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="true" overrideUninstallMode="false" />
+      <fileEntry mountPoint="24" file="../j-lawyer-releases/j-lawyer-client/libjsb.jnilib" overwriteMode="1" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="true" overrideUninstallMode="false" />
+      <fileEntry mountPoint="24" file="../j-lawyer-releases/j-lawyer-client/libjsb.so" overwriteMode="1" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="true" overrideUninstallMode="false" />
+      <fileEntry mountPoint="24" file="../j-lawyer-releases/j-lawyer-client/ks.jpg" overwriteMode="1" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="true" overrideUninstallMode="false" />
     </entries>
     <components>
       <component name="j-lawyer Client" id="22" customizedId="" displayDescription="true" hideHelpButton="false" selected="true" changeable="false" downloadable="false" hidden="false">
@@ -77,7 +81,7 @@
           <versionLine x="20" y="40" text="version ${compiler:sys.version}" fontSize="8" fontColor="0,0,0" bold="false" />
         </text>
       </splashScreen>
-      <java mainClass="com.jdimension.jlawyer.client.Main" mainMode="1" vmParameters="-Xmx1024M -Djava.security.auth.login.config=auth.conf -Djava.net.preferIPv4Stack=true" arguments="" allowVMPassthroughParameters="true" preferredVM="client" bundleRuntime="true">
+      <java mainClass="com.jdimension.jlawyer.client.Main" mainMode="1" vmParameters="-Xmx1536M -Djava.security.auth.login.config=auth.conf -Djava.net.preferIPv4Stack=true -Djavax.net.ssl.keyStore=ks.jpg" arguments="" allowVMPassthroughParameters="true" preferredVM="client" bundleRuntime="true">
         <classPath>
           <archive location="j-lawyer-client.jar" failOnError="false" />
         </classPath>
@@ -2898,7 +2902,7 @@ return console.askYesNo(message, true);
     </styles>
   </installerGui>
   <mediaSets>
-    <windows name="Windows-x86" id="28" customizedId="" mediaFileName="" installDir="${compiler:sys.shortName}" overridePrincipalLanguage="false" jreBitType="32" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="false" includedJRE="windows-x86-1.8.0_192" manualJREEntry="false" bundleType="1" jreURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" customInstallBaseDir="" contentFilesType="1" verifyIntegrity="true">
+    <windows name="Windows-x86" id="28" customizedId="" mediaFileName="" installDir="${compiler:sys.shortName}" overridePrincipalLanguage="false" jreBitType="32" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="false" includedJRE="windows-x86-1.8.0_202" manualJREEntry="false" bundleType="1" jreURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" customInstallBaseDir="" contentFilesType="1" verifyIntegrity="true">
       <excludedComponents />
       <includedDownloadableComponents />
       <excludedLaunchers />
@@ -2911,7 +2915,7 @@ return console.askYesNo(message, true);
         <customAttributes />
       </autoUpdate>
     </windows>
-    <windows name="Windows-x64" id="29" customizedId="" mediaFileName="" installDir="${compiler:sys.shortName}" overridePrincipalLanguage="false" jreBitType="64" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="false" includedJRE="windows-amd64-1.8.0_192" manualJREEntry="false" bundleType="1" jreURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" customInstallBaseDir="" contentFilesType="1" verifyIntegrity="true">
+    <windows name="Windows-x64" id="29" customizedId="" mediaFileName="" installDir="${compiler:sys.shortName}" overridePrincipalLanguage="false" jreBitType="64" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="false" includedJRE="windows-amd64-1.8.0_202" manualJREEntry="false" bundleType="1" jreURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" customInstallBaseDir="" contentFilesType="1" verifyIntegrity="true">
       <excludedComponents />
       <includedDownloadableComponents />
       <excludedLaunchers />
@@ -3033,9 +3037,10 @@ update-alternatives --set java /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181.b15-5.f
     </linuxRPM>
   </mediaSets>
   <buildIds buildAll="false">
-    <mediaSet refId="670" />
-    <mediaSet refId="678" />
-    <mediaSet refId="680" />
+    <mediaSet refId="28" />
+    <mediaSet refId="29" />
+    <mediaSet refId="30" />
+    <mediaSet refId="31" />
   </buildIds>
   <buildOptions verbose="true" faster="false" disableSigning="false" disableJreBundling="false" debug="false" />
 </install4j>
