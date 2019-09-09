@@ -1410,7 +1410,7 @@ return true;
                 <serializedBean>
                   <property name="displayedText" type="string">&lt;html&gt;
 ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
-&lt;b&gt;${compiler:mac.libreoffice.downloadfile}&lt;/b&gt; + " in " + &lt;b&gt;${installer:sys.downloadsDir}&lt;/b&gt;
+&lt;b&gt;${compiler:mac.libreoffice.downloadfile}&lt;/b&gt; in &lt;b&gt;${installer:sys.downloadsDir}&lt;/b&gt;
 &lt;/html&gt;
 
 </property>
