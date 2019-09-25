@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<install4j version="8.0.1" transformSequenceNumber="8">
+<install4j version="8.0.2" transformSequenceNumber="8">
   <directoryPresets config="../j-lawyer-releases/j-lawyer-client/libjsb.so" />
-  <application name="j-lawyer.org (Client)" applicationId="2679-5007-8596-7844" mediaDir="./media" compression="9" lzmaCompression="true" pack200Compression="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="http://www.j-lawyer.org" version="1.10.0.8" allPathsRelative="true" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8">
+  <application name="j-lawyer.org (Client)" applicationId="2679-5007-8596-7844" mediaDir="./media" compression="9" lzmaCompression="true" pack200Compression="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="http://www.j-lawyer.org" version="1.10.0.11" allPathsRelative="true" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8">
     <languages>
       <principalLanguage id="de" customLocalizationFile="./j-lawyer-installer-client-i18n.properties" />
       <additionalLanguages>
@@ -838,6 +838,60 @@ For more information on this, and how to apply and follow the GNU AGPL, see
                   <propertyName>acceptInitiallySelected</propertyName>
                   <propertyName>readAllRequired</propertyName>
                 </externalParametrizationPropertyNames>
+              </formComponent>
+            </formComponents>
+          </screen>
+          <screen name="Display beA disclaimer" id="681" beanClass="com.install4j.runtime.beans.screens.FormScreen">
+            <serializedBean>
+              <property name="scrollable" type="boolean" value="false" />
+              <property name="subTitle" type="string">Hinweise zur Nutzung der integrierten beA-Schnittstelle (besonderes elektronisches Anwaltspostfach )</property>
+              <property name="title" type="string">beA</property>
+            </serializedBean>
+            <formComponents>
+              <formComponent id="682" beanClass="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent" useExternalParametrization="true" externalParametrizationName="Header" externalParametrizationMode="include">
+                <serializedBean>
+                  <property name="hideIfBlank" type="boolean" value="true" />
+                </serializedBean>
+                <visibilityScript>!context.isConsole()</visibilityScript>
+                <externalParametrizationPropertyNames>
+                  <propertyName>labelText</propertyName>
+                </externalParametrizationPropertyNames>
+              </formComponent>
+              <formComponent id="683" beanClass="com.install4j.runtime.beans.formcomponents.HtmlDisplayFormComponent" useExternalParametrization="true" externalParametrizationName="HTML display" externalParametrizationMode="include">
+                <serializedBean>
+                  <property name="displayedText" type="string">&lt;html&gt;
+&lt;font color="red"&gt;
+&lt;b&gt;Nutzung der beA-Integration auf eigene Gefahr&lt;/b&gt;
+&lt;br/&gt;&amp;nbsp;&lt;br/&gt;
+j-lawyer.org beinhaltet eine Schnittstelle zum besonderen elektronischen Anwaltspostfach beA der Bundesrechtsanwaltskammer. Eine Nutzung der j-lawyer.org ist ohne eine Nutzung dieser Integration uneingeschränkt möglich.
+&lt;br/&gt;&amp;nbsp;&lt;br/&gt;
+Wird die Integration genutzt, so ist vom Anwender der Empfang, der Versand und sonstige Verarbeitung von beA-Nachrichten zusätzlich über die beA-Weboberfläche zu verifizieren. Die vollständige Korrektheit der beA-Integration in j-lawyer.org kann nicht gewährleistet werden.
+&lt;br/&gt;&amp;nbsp;&lt;br/&gt;
+&lt;b&gt;Sind Sie damit nicht einverstanden, so brechen Sie die Installation an dieser Stelle ab. &lt;/b&gt;
+&lt;/font&gt;
+&lt;/html&gt;
+
+</property>
+                  <property name="fillVertical" type="boolean" value="true" />
+                  <property name="textSource" type="enum" class="com.install4j.runtime.beans.screens.components.TextSource" value="DIRECT" />
+                </serializedBean>
+                <externalParametrizationPropertyNames>
+                  <propertyName>textSource</propertyName>
+                  <propertyName>displayedText</propertyName>
+                  <propertyName>displayedTextFile</propertyName>
+                  <propertyName>variableName</propertyName>
+                </externalParametrizationPropertyNames>
+              </formComponent>
+              <formComponent id="684" beanClass="com.install4j.runtime.beans.formcomponents.ConsoleHandlerFormComponent">
+                <serializedBean>
+                  <property name="consoleScript">
+                    <object class="com.install4j.api.beans.ScriptProperty">
+                      <property name="value" type="string">console.waitForEnter();
+return true;
+</property>
+                    </object>
+                  </property>
+                </serializedBean>
               </formComponent>
             </formComponents>
           </screen>
@@ -1861,6 +1915,7 @@ return console.askYesNo(message, true);
       <jreBundle jreBundleSource="generated" includedJre="OpenJDK8U-jre_x64_linux_hotspot_8u212b04.tar.gz" manualJreEntry="true" />
     </unixInstaller>
     <linuxDeb name="Linux Deb Archive" id="670" dependencies="openjdk-8-jre,libreoffice,libreoffice-l10n-de,libreoffice-help-de,unoconv" bzip="true" description="j-lawyer.org Client" maintainerEmail="info@j-lawyer.org">
+      <jreBundle manualJreEntry="true" />
       <postInstallScript>cp /opt/j-lawyer-client/j-lawyer-client.desktop /usr/share/applications/j-lawyer-client.desktop
 update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java</postInstallScript>
     </linuxDeb>
@@ -1873,10 +1928,7 @@ update-alternatives --set java /usr/lib64/jvm/jre-1.8.0-openjdk/bin/java</postIn
 update-alternatives --set java /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181.b15-5.fc29.x86_64/jre/bin/java</postInstallScript>
     </linuxRPM>
   </mediaSets>
-  <buildIds buildAll="false">
-    <mediaSet refId="28" />
+  <buildIds>
     <mediaSet refId="29" />
-    <mediaSet refId="30" />
-    <mediaSet refId="31" />
   </buildIds>
 </install4j>
