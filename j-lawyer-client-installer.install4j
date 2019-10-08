@@ -16,6 +16,7 @@
       <variable name="download.base" value="https://www.j-lawyer.org/downloads/" />
       <variable name="download.3rdparty.base" value="https://www.j-lawyer.org/downloads/installer-3rdparty/" />
       <variable name="mac.libreoffice.downloadfile" value="LibreOffice_4.2.8.2_MacOS_x86-64.dmg" />
+      <variable name="mac.libreoffice.downloadfile-langpack" value="LibreOffice_4.2.8.2_MacOS_x86_langpack_de.dmg" />
       <variable name="win64.libreoffice.downloadfile" value="LibreOffice_6.1.0_Win_x64.msi" description="reset to 32Bit installer - unoconv does currently not work with 64Bit LibreOffice/Python" />
       <variable name="download.3rdparty.libreoffice.version" value="6.1.0" />
       <variable name="download.3rdparty.mysql.version" value="5.7" />
@@ -1289,6 +1290,18 @@ context.goForward(1, true, true);
                 </serializedBean>
                 <condition>Util.isMacOS() &amp;&amp; "install".equalsIgnoreCase(context.getVariable("libreoffice.installmode").toString())</condition>
               </action>
+              <action name="Download LibreOffice-langpack Mac" id="815" beanClass="com.install4j.runtime.beans.actions.net.DownloadFileAction" actionElevationType="elevated" errorMessage="${i18n:error.download.libreoffice}">
+                <serializedBean>
+                  <property name="deleteOnExit" type="boolean" value="true" />
+                  <property name="targetFile">
+                    <object class="java.io.File">
+                      <string>${installer:sys.downloadsDir}${installer:sys.fileSeparator}${compiler:mac.libreoffice.downloadfile-langpack}</string>
+                    </object>
+                  </property>
+                  <property name="url" type="string">${compiler:download.3rdparty.base}${compiler:mac.libreoffice.downloadfile-langpack}</property>
+                </serializedBean>
+                <condition>Util.isMacOS() &amp;&amp; "install".equalsIgnoreCase(context.getVariable("libreoffice.installmode").toString())</condition>
+              </action>
               <action name="Download libreoffice-install-linux.sh" id="322" beanClass="com.install4j.runtime.beans.actions.net.DownloadFileAction" actionElevationType="elevated" errorMessage="${i18n:error.download.libreoffice}">
                 <serializedBean>
                   <property name="deleteOnExit" type="boolean" value="true" />
@@ -1464,7 +1477,7 @@ return true;
                 <serializedBean>
                   <property name="displayedText" type="string">&lt;html&gt;
 ${i18n:screens.libreofficeinstall.machint}&lt;br/&gt;
-&lt;b&gt;${compiler:mac.libreoffice.downloadfile}&lt;/b&gt; in &lt;b&gt;${installer:sys.downloadsDir}&lt;/b&gt;
+&lt;b&gt;${compiler:mac.libreoffice.downloadfile}&lt;/b&gt; and &lt;b&gt;${compiler:mac.libreoffice.downloadfile-langpack}&lt;/b&gt; in &lt;b&gt;${installer:sys.downloadsDir}&lt;/b&gt;
 &lt;/html&gt;
 
 </property>
