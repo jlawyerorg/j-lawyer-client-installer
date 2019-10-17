@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="8.0.2" transformSequenceNumber="8">
   <directoryPresets config="../j-lawyer-releases/j-lawyer-client/libjsb.so" />
-  <application name="j-lawyer.org (Client)" applicationId="2679-5007-8596-7844" mediaDir="./media" compression="9" lzmaCompression="true" pack200Compression="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="http://www.j-lawyer.org" version="1.10.0.13" allPathsRelative="true" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8">
+  <application name="j-lawyer.org (Client)" applicationId="2679-5007-8596-7844" mediaDir="./media" compression="9" lzmaCompression="true" pack200Compression="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="http://www.j-lawyer.org" version="1.11.0.0" allPathsRelative="true" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8">
     <languages>
       <principalLanguage id="de" customLocalizationFile="./j-lawyer-installer-client-i18n.properties" />
       <additionalLanguages>
