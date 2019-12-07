@@ -21,7 +21,7 @@
       <variable name="download.3rdparty.libreoffice.version" value="6.1.0" />
       <variable name="download.3rdparty.mysql.version" value="5.7" />
     </variables>
-    <jreBundles jdkProviderId="Liberica" release="OpenJDK 8u212" />
+    <jreBundles jdkProviderId="Liberica" release="OpenJDK 8u232" />
   </application>
   <files defaultOverwriteMode="1">
     <mountPoints>
@@ -1941,7 +1941,10 @@ update-alternatives --set java /usr/lib64/jvm/jre-1.8.0-openjdk/bin/java</postIn
 update-alternatives --set java /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181.b15-5.fc29.x86_64/jre/bin/java</postInstallScript>
     </linuxRPM>
   </mediaSets>
-  <buildIds>
+  <buildIds buildAll="false">
+    <mediaSet refId="28" />
     <mediaSet refId="29" />
+    <mediaSet refId="30" />
+    <mediaSet refId="31" />
   </buildIds>
 </install4j>
