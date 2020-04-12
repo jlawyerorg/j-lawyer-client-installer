@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="8.0.2" transformSequenceNumber="8">
   <directoryPresets config="../j-lawyer-releases/j-lawyer-client/libjsb.so" />
-  <application name="j-lawyer.org (Client)" applicationId="2679-5007-8596-7844" mediaDir="./media" compression="9" lzmaCompression="true" pack200Compression="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="http://www.j-lawyer.org" version="1.11.0.2" allPathsRelative="true" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8">
+  <application name="j-lawyer.org (Client)" applicationId="2679-5007-8596-7844" mediaDir="./media" compression="9" lzmaCompression="true" pack200Compression="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="http://www.j-lawyer.org" version="1.12.0.2" allPathsRelative="true" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8">
     <languages>
       <principalLanguage id="de" customLocalizationFile="./j-lawyer-installer-client-i18n.properties" />
       <additionalLanguages>
@@ -15,8 +15,8 @@
       <variable name="win32.libreoffice.downloadfile" value="LibreOffice_6.1.0_Win_x86.msi" />
       <variable name="download.base" value="https://www.j-lawyer.org/downloads/" />
       <variable name="download.3rdparty.base" value="https://www.j-lawyer.org/downloads/installer-3rdparty/" />
-      <variable name="mac.libreoffice.downloadfile" value="LibreOffice_4.2.8.2_MacOS_x86-64.dmg" />
-      <variable name="mac.libreoffice.downloadfile-langpack" value="LibreOffice_4.2.8.2_MacOS_x86_langpack_de.dmg" />
+      <variable name="mac.libreoffice.downloadfile" value="LibreOffice_6.4.2_MacOS_x86-64.dmg" />
+      <variable name="mac.libreoffice.downloadfile-langpack" value="LibreOffice_6.4.2_MacOS_x86-64_langpack_de.dmg" />
       <variable name="win64.libreoffice.downloadfile" value="LibreOffice_6.1.0_Win_x64.msi" description="reset to 32Bit installer - unoconv does currently not work with 64Bit LibreOffice/Python" />
       <variable name="download.3rdparty.libreoffice.version" value="6.1.0" />
       <variable name="download.3rdparty.mysql.version" value="5.7" />
@@ -58,7 +58,7 @@
   <launchers>
     <launcher name="j-lawyer-Client" id="27">
       <executable name="j-lawyer-Client" iconSet="true" executableDir="." executableMode="gui" checkConsoleParameter="true" dpiAware="false">
-        <versionInfo include="true" fileVersion="${compiler:sys.version}" fileDescription="http://www.j-lawyer.org" legalCopyright="https://www.gnu.org/licenses/agpl-3.0.de.html" internalName="${compiler:sys.shortName}" productName="${compiler:sys.fullName}" />
+        <versionInfo include="true" fileVersion="${compiler:sys.version}" fileDescription="j-lawyer.org Client" legalCopyright="https://www.gnu.org/licenses/agpl-3.0.de.html" internalName="${compiler:sys.shortName}" productName="${compiler:sys.fullName}" />
       </executable>
       <splashScreen show="true" bitmapFile="../j-lawyer-releases/j-lawyer-client/j-lawyer-startup-splash.png" />
       <java mainClass="com.jdimension.jlawyer.client.Main" vmParameters="-Xmx1536M -Djava.security.auth.login.config=auth.conf -Djava.net.preferIPv4Stack=true -Djavax.net.ssl.keyStore=ks.jpg" preferredVM="client">
@@ -1581,6 +1581,35 @@ return true;
                   <property name="variableName" type="string">JLAWYERCLIENTHOME</property>
                 </serializedBean>
               </action>
+              <action name="Copy JSB libs" id="928" beanClass="com.install4j.runtime.beans.actions.files.CopyFileAction" actionElevationType="elevated" rollbackBarrierExitCode="0" multiExec="true">
+                <serializedBean>
+                  <property name="destinationFile">
+                    <object class="java.io.File">
+                      <string>${installer:sys.installationDir}/jre/bin</string>
+                    </object>
+                  </property>
+                  <property name="files" type="array" class="java.io.File" length="3">
+                    <element index="0">
+                      <object class="java.io.File">
+                        <string>jsb.dll</string>
+                      </object>
+                    </element>
+                    <element index="1">
+                      <object class="java.io.File">
+                        <string>libjsb.jnilib</string>
+                      </object>
+                    </element>
+                    <element index="2">
+                      <object class="java.io.File">
+                        <string>libjsb.so</string>
+                      </object>
+                    </element>
+                  </property>
+                  <property name="overwriteMode" type="enum" class="com.install4j.api.context.OverwriteMode" value="ALWAYS" />
+                  <property name="showProgress" type="boolean" value="true" />
+                  <property name="triggerReboot" type="boolean" value="false" />
+                </serializedBean>
+              </action>
             </actions>
             <formComponents>
               <formComponent id="553" beanClass="com.install4j.runtime.beans.formcomponents.ProgressComponent">
@@ -1943,7 +1972,6 @@ update-alternatives --set java /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181.b15-5.f
     </linuxRPM>
   </mediaSets>
   <buildIds buildAll="false">
-    <mediaSet refId="28" />
     <mediaSet refId="29" />
     <mediaSet refId="30" />
     <mediaSet refId="31" />
