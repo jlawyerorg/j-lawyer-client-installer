@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="8.0.2" transformSequenceNumber="8">
   <directoryPresets config="../j-lawyer-releases/j-lawyer-client/libjsb.so" />
-  <application name="j-lawyer.org (Client)" applicationId="2679-5007-8596-7844" mediaDir="./media" compression="9" lzmaCompression="true" pack200Compression="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="http://www.j-lawyer.org" version="1.12.0.8" allPathsRelative="true" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8">
+  <application name="j-lawyer.org (Client)" applicationId="2679-5007-8596-7844" mediaDir="./media" compression="9" lzmaCompression="true" pack200Compression="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="http://www.j-lawyer.org" version="1.13.0.2" allPathsRelative="true" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8">
     <languages>
       <principalLanguage id="de" customLocalizationFile="./j-lawyer-installer-client-i18n.properties" />
       <additionalLanguages>
@@ -968,7 +968,10 @@ return true;
             <validation>// need to set libreoffice.path so that we can later add it to PATH variable on windows
 if("install".equalsIgnoreCase((String)context.getVariable("libreoffice.installmode"))) {
     // default install location is %ProgramFiles%\LibreOffice
-    String programFiles=WinEnvVars.getenv("ProgramFiles");
+    String programFiles="C:\\Program Files";
+    if(Util.isWindows()) {
+        programFiles=WinEnvVars.getenv("ProgramFiles");
+    }
     if(Util.is64BitWindows()) {
         // need to install 32 Bit LibreOffice due to unoconv not working
         //programFiles=WinEnvVars.getenv("ProgramFiles(x86)");
@@ -1970,6 +1973,9 @@ update-alternatives --set java /usr/lib64/jvm/jre-1.8.0-openjdk/bin/java</postIn
       <postInstallScript>cp /opt/j-lawyer-client/j-lawyer-client.desktop /usr/share/applications/j-lawyer-client.desktop
 update-alternatives --set java /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181.b15-5.fc29.x86_64/jre/bin/java</postInstallScript>
     </linuxRPM>
+    <unixInstaller name="Unix Installer ARM64" id="1014" mediaFileName="${compiler:sys.shortName}_ARM64_${compiler:sys.version}">
+      <jreBundle includedJre="OpenJDK8U-jre_x64_linux_hotspot_8u212b04.tar.gz" manualJreEntry="true" />
+    </unixInstaller>
   </mediaSets>
   <buildIds buildAll="false">
     <mediaSet refId="28" />
