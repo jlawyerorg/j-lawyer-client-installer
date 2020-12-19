@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="8.0.2" transformSequenceNumber="8">
-  <directoryPresets config="../j-lawyer-releases/j-lawyer-client/libjsb.so" />
+  <directoryPresets config="./apple-codesigning-jkitconsult.p12" />
   <application name="j-lawyer.org (Client)" applicationId="2679-5007-8596-7844" mediaDir="./media" compression="9" lzmaCompression="true" pack200Compression="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="http://www.j-lawyer.org" version="1.13.0.5" allPathsRelative="true" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8">
     <languages>
       <principalLanguage id="de" customLocalizationFile="./j-lawyer-installer-client-i18n.properties" />
@@ -21,6 +21,7 @@
       <variable name="download.3rdparty.libreoffice.version" value="6.1.0" />
       <variable name="download.3rdparty.mysql.version" value="5.7" />
     </variables>
+    <codeSigning macEnabled="true" macPkcs12File="./apple-codesigning-jkitconsult.p12" />
     <jreBundles jdkProviderId="Liberica" release="OpenJDK 8u232" />
   </application>
   <files defaultOverwriteMode="1">
@@ -1978,9 +1979,6 @@ update-alternatives --set java /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181.b15-5.f
     </unixInstaller>
   </mediaSets>
   <buildIds buildAll="false">
-    <mediaSet refId="28" />
-    <mediaSet refId="29" />
     <mediaSet refId="30" />
-    <mediaSet refId="31" />
   </buildIds>
 </install4j>
