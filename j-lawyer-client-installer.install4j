@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<install4j version="8.0.2" transformSequenceNumber="8">
-  <directoryPresets config="./apple-codesigning-jkitconsult.p12" />
-  <application name="j-lawyer.org (Client)" applicationId="2679-5007-8596-7844" mediaDir="./media" compression="9" lzmaCompression="true" pack200Compression="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="http://www.j-lawyer.org" version="1.13.0.5" allPathsRelative="true" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8">
+<install4j version="9.0.1" transformSequenceNumber="9">
+  <directoryPresets config="./windows-codesigning-sectigo-jenskutschke.pfx" />
+  <application name="j-lawyer.org (Client)" applicationId="2679-5007-8596-7844" mediaDir="./media" compression="9" lzmaCompression="true" pack200Compression="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="http://www.j-lawyer.org" version="1.14.0.0" allPathsRelative="true" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8">
     <languages>
       <principalLanguage id="de" customLocalizationFile="./j-lawyer-installer-client-i18n.properties" />
       <additionalLanguages>
@@ -9,22 +9,26 @@
       </additionalLanguages>
     </languages>
     <variables>
-      <variable name="win64.libreoffice.batchfile" value="libreoffice-install-win64.bat" />
-      <variable name="win32.libreoffice.batchfile" value="libreoffice-install-win32.bat" />
+      <variable name="win64.libreoffice.batchfile" value="libreoffice7-install-win64.bat" />
+      <variable name="win32.libreoffice.batchfile" value="libreoffice7-install-win32.bat" />
       <variable name="linux.libreoffice.batchfile" value="libreoffice-install-linux.sh" />
-      <variable name="win32.libreoffice.downloadfile" value="LibreOffice_6.1.0_Win_x86.msi" />
+      <variable name="win32.libreoffice.downloadfile" value="LibreOffice_7.1.2_Win_x86.msi" />
       <variable name="download.base" value="https://www.j-lawyer.org/downloads/" />
       <variable name="download.3rdparty.base" value="https://www.j-lawyer.org/downloads/installer-3rdparty/" />
-      <variable name="mac.libreoffice.downloadfile" value="LibreOffice_6.4.2_MacOS_x86-64.dmg" />
-      <variable name="mac.libreoffice.downloadfile-langpack" value="LibreOffice_6.4.2_MacOS_x86-64_langpack_de.dmg" />
-      <variable name="win64.libreoffice.downloadfile" value="LibreOffice_6.1.0_Win_x64.msi" description="reset to 32Bit installer - unoconv does currently not work with 64Bit LibreOffice/Python" />
-      <variable name="download.3rdparty.libreoffice.version" value="6.1.0" />
+      <variable name="mac.libreoffice.downloadfile" value="LibreOffice_7.1.2_MacOS_x86-64.dmg" />
+      <variable name="mac.libreoffice.downloadfile-langpack" value="LibreOffice_7.1.2_MacOS_x86-64_langpack_de.dmg" />
+      <variable name="win64.libreoffice.downloadfile" value="LibreOffice_7.1.2_Win_x64.msi" description="reset to 32Bit installer - unoconv does currently not work with 64Bit LibreOffice/Python" />
+      <variable name="download.3rdparty.libreoffice.version" value="7.1.2" />
       <variable name="download.3rdparty.mysql.version" value="5.7" />
     </variables>
-    <codeSigning macEnabled="true" macPkcs12File="./apple-codesigning-jkitconsult.p12" />
-    <jreBundles jdkProviderId="Liberica" release="OpenJDK 8u232" />
+    <codeSigning macEnabled="true" macPkcs12File="./apple-codesigning-jkitconsult.p12" windowsEnabled="true" windowsPkcs12File="./windows-codesigning-sectigo-jenskutschke.pfx" />
+    <jreBundles jdkProviderId="Liberica" release="8/8u282+8">
+      <modules>
+        <defaultModules set="all" />
+      </modules>
+    </jreBundles>
   </application>
-  <files defaultOverwriteMode="1">
+  <files defaultOverwriteMode="1" preserveSymlinks="false">
     <mountPoints>
       <mountPoint id="25" location="lib" />
       <mountPoint id="26" location="unoconv-master" />
@@ -76,12 +80,14 @@
   </launchers>
   <installerGui>
     <applications>
-      <application id="installer" beanClass="com.install4j.runtime.beans.applications.InstallerApplication" launchInNewProcess="false">
+      <application id="installer" beanClass="com.install4j.runtime.beans.applications.InstallerApplication" actionElevationType="elevated" launchInNewProcess="false">
         <startup>
           <screen id="1" beanClass="com.install4j.runtime.beans.screens.StartupScreen" rollbackBarrierExitCode="0">
             <actions>
               <action id="13" beanClass="com.install4j.runtime.beans.actions.misc.RequestPrivilegesAction" actionElevationType="none">
                 <serializedBean>
+                  <property name="obtainIfAdminMac" type="boolean" value="true" />
+                  <property name="obtainIfNormalMac" type="boolean" value="true" />
                   <property name="obtainIfNormalWin" type="boolean" value="true" />
                 </serializedBean>
               </action>
@@ -1347,7 +1353,7 @@ context.goForward(1, true, true);
                   <property name="progressChangeType" type="enum" class="com.install4j.runtime.beans.actions.control.ProgressChangeType" value="SET_INDETERMINATE" />
                 </serializedBean>
               </action>
-              <action name="libreoffice-install-win32.bat" id="274" beanClass="com.install4j.runtime.beans.actions.control.RunScriptAction" errorMessage="${i18n:error.install.libreoffice}">
+              <action name="libreoffice-install-win32.bat" id="274" beanClass="com.install4j.runtime.beans.actions.control.RunScriptAction" actionElevationType="elevated" errorMessage="${i18n:error.install.libreoffice}">
                 <serializedBean>
                   <property name="script">
                     <object class="com.install4j.api.beans.ScriptProperty">
@@ -1362,7 +1368,7 @@ Util.logInfo(null, "workingDir: " + workingDir);
 //pb.redirectErrorStream(true).start().waitFor();
 //return true;
 
-ProcessBuilder pb=new ProcessBuilder("cmd.exe", "/C", "libreoffice-install-win32.bat");
+ProcessBuilder pb=new ProcessBuilder("cmd.exe", "/C", "libreoffice7-install-win32.bat");
 pb.directory(new File(workingDir));
 pb.redirectErrorStream(true).start().waitFor();
 return true;
@@ -1372,7 +1378,7 @@ return true;
                 </serializedBean>
                 <condition>Util.isWindows() &amp;&amp; !(Util.is64BitWindows()) &amp;&amp; "install".equalsIgnoreCase(context.getVariable("libreoffice.installmode").toString())</condition>
               </action>
-              <action name="libreoffice-install-win64.bat" id="231" beanClass="com.install4j.runtime.beans.actions.control.RunScriptAction" errorMessage="${i18n:error.install.libreoffice}">
+              <action name="libreoffice-install-win64.bat" id="231" beanClass="com.install4j.runtime.beans.actions.control.RunScriptAction" actionElevationType="elevated" errorMessage="${i18n:error.install.libreoffice}">
                 <serializedBean>
                   <property name="script">
                     <object class="com.install4j.api.beans.ScriptProperty">
@@ -1387,7 +1393,7 @@ Util.logInfo(null, "workingDir: " + workingDir);
 //pb.redirectErrorStream(true).start().waitFor();
 //return true;
 
-ProcessBuilder pb=new ProcessBuilder("cmd.exe", "/C", "libreoffice-install-win64.bat");
+ProcessBuilder pb=new ProcessBuilder("cmd.exe", "/C", "libreoffice7-install-win64.bat");
 pb.directory(new File(workingDir));
 pb.redirectErrorStream(true).start().waitFor();
 return true;
@@ -1771,11 +1777,19 @@ return console.askYesNo(message, true);
           <group id="650" beanClass="com.install4j.runtime.beans.groups.VerticalFormComponentGroup" useExternalParametrization="true" externalParametrizationName="Customize banner image" externalParametrizationMode="include">
             <serializedBean>
               <property name="backgroundColor">
-                <object class="java.awt.Color">
-                  <int>255</int>
-                  <int>255</int>
-                  <int>255</int>
-                  <int>255</int>
+                <object class="com.install4j.runtime.beans.LightOrDarkColor">
+                  <object class="java.awt.Color">
+                    <int>255</int>
+                    <int>255</int>
+                    <int>255</int>
+                    <int>255</int>
+                  </object>
+                  <object class="java.awt.Color">
+                    <int>49</int>
+                    <int>52</int>
+                    <int>53</int>
+                    <int>255</int>
+                  </object>
                 </object>
               </property>
               <property name="borderSides">
@@ -1784,11 +1798,19 @@ return console.askYesNo(message, true);
                 </object>
               </property>
               <property name="imageEdgeBackgroundColor">
-                <object class="java.awt.Color">
-                  <int>25</int>
-                  <int>143</int>
-                  <int>220</int>
-                  <int>255</int>
+                <object class="com.install4j.runtime.beans.LightOrDarkColor">
+                  <object class="java.awt.Color">
+                    <int>25</int>
+                    <int>143</int>
+                    <int>220</int>
+                    <int>255</int>
+                  </object>
+                  <object class="java.awt.Color">
+                    <int>0</int>
+                    <int>74</int>
+                    <int>151</int>
+                    <int>255</int>
+                  </object>
                 </object>
               </property>
               <property name="imageEdgeBorder" type="boolean" value="true" />
@@ -1842,11 +1864,19 @@ return console.askYesNo(message, true);
               <group id="657" beanClass="com.install4j.runtime.beans.groups.VerticalFormComponentGroup" useExternalParametrization="true" externalParametrizationName="Customize title bar" externalParametrizationMode="include">
                 <serializedBean>
                   <property name="backgroundColor">
-                    <object class="java.awt.Color">
-                      <int>255</int>
-                      <int>255</int>
-                      <int>255</int>
-                      <int>255</int>
+                    <object class="com.install4j.runtime.beans.LightOrDarkColor">
+                      <object class="java.awt.Color">
+                        <int>255</int>
+                        <int>255</int>
+                        <int>255</int>
+                        <int>255</int>
+                      </object>
+                      <object class="java.awt.Color">
+                        <int>49</int>
+                        <int>52</int>
+                        <int>53</int>
+                        <int>255</int>
+                      </object>
                     </object>
                   </property>
                   <property name="borderSides">
@@ -1950,35 +1980,44 @@ return console.askYesNo(message, true);
   </installerGui>
   <mediaSets>
     <windows name="Windows-x86" id="28" jreBitType="32">
-      <jreBundle release="openjdk8/jdk8u212-b04" jreBundleSource="generated" includedJre="OpenJDK8U-jre_x86-32_windows_hotspot_8u212b04.tar.gz" manualJreEntry="true" />
+      <jreBundle release="openjdk8/jdk8u212-b04" includedJre="OpenJDK8U-jre_x86-32_windows_hotspot_8u212b04.tar.gz" manualJreEntry="true" />
     </windows>
     <windows name="Windows-x64" id="29">
-      <jreBundle release="openjdk8/jdk8u212-b04_openj9-0.14.2" jreBundleSource="generated" includedJre="OpenJDK8U-jre_x64_windows_hotspot_8u212b04.tar.gz" manualJreEntry="true" />
+      <jreBundle release="openjdk8/jdk8u212-b04_openj9-0.14.2" includedJre="OpenJDK8U-jre_x64_windows_hotspot_8u212b04.tar.gz" manualJreEntry="true" />
     </windows>
-    <macos name="Mac OS X Single Bundle" id="30" launcherId="27">
-      <jreBundle release="openjdk8/jdk8u212-b04_openj9-0.14.2" jreBundleSource="generated" includedJre="OpenJDK8U-jre_x64_mac_hotspot_8u212b04.tar.gz" manualJreEntry="true" />
+    <macos name="Mac OS X Single Bundle Intel" id="30" launcherId="27">
+      <jreBundle release="openjdk8/jdk8u212-b04_openj9-0.14.2" includedJre="OpenJDK8U-jre_x64_mac_hotspot_8u212b04.tar.gz" manualJreEntry="true" />
     </macos>
     <unixInstaller name="Unix Installer" id="31">
-      <jreBundle jreBundleSource="generated" includedJre="OpenJDK8U-jre_x64_linux_hotspot_8u212b04.tar.gz" manualJreEntry="true" />
+      <jreBundle includedJre="OpenJDK8U-jre_x64_linux_hotspot_8u212b04.tar.gz" manualJreEntry="true" />
     </unixInstaller>
     <linuxDeb name="Linux Deb Archive" id="670" dependencies="openjdk-8-jre,libreoffice,libreoffice-l10n-de,libreoffice-help-de,unoconv" bzip="true" description="j-lawyer.org Client" maintainerEmail="info@j-lawyer.org">
-      <jreBundle manualJreEntry="true" />
+      <jreBundle jreBundleSource="none" manualJreEntry="true" />
       <postInstallScript>cp /opt/j-lawyer-client/j-lawyer-client.desktop /usr/share/applications/j-lawyer-client.desktop
 update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java</postInstallScript>
     </linuxDeb>
     <linuxRPM name="openSUSE RPM" id="678" mediaFileName="${compiler:sys.shortName}_openSUSE_${compiler:sys.platform}_${compiler:sys.version}" dependencies="java-1_8_0-openjdk libreoffice libreoffice-l10n-de unoconv">
+      <jreBundle jreBundleSource="none" />
       <postInstallScript>cp /opt/j-lawyer-client/j-lawyer-client.desktop /usr/share/applications/j-lawyer-client.desktop
 update-alternatives --set java /usr/lib64/jvm/jre-1.8.0-openjdk/bin/java</postInstallScript>
     </linuxRPM>
     <linuxRPM name="RedHat RPM" id="680" mediaFileName="${compiler:sys.shortName}_CentOS-Fedora-RedHat_${compiler:sys.platform}_${compiler:sys.version}" dependencies="java-1.8.0-openjdk libreoffice libreoffice-langpack-de unoconv">
+      <jreBundle jreBundleSource="none" />
       <postInstallScript>cp /opt/j-lawyer-client/j-lawyer-client.desktop /usr/share/applications/j-lawyer-client.desktop
 update-alternatives --set java /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181.b15-5.fc29.x86_64/jre/bin/java</postInstallScript>
     </linuxRPM>
     <unixInstaller name="Unix Installer ARM64" id="1014" mediaFileName="${compiler:sys.shortName}_ARM64_${compiler:sys.version}">
-      <jreBundle includedJre="OpenJDK8U-jre_x64_linux_hotspot_8u212b04.tar.gz" manualJreEntry="true" />
+      <jreBundle jreBundleSource="none" includedJre="OpenJDK8U-jre_x64_linux_hotspot_8u212b04.tar.gz" manualJreEntry="true" />
     </unixInstaller>
+    <macos name="Mac OS X Single Bundle M1 ARM64" id="1018" architecture="aarch64" launcherId="27">
+      <jreBundle release="openjdk8/jdk8u212-b04_openj9-0.14.2" includedJre="OpenJDK8U-jre_x64_mac_hotspot_8u212b04.tar.gz" manualJreEntry="true" />
+    </macos>
   </mediaSets>
   <buildIds buildAll="false">
+    <mediaSet refId="28" />
+    <mediaSet refId="29" />
     <mediaSet refId="30" />
+    <mediaSet refId="31" />
   </buildIds>
+  <buildOptions disableSigning="true" />
 </install4j>
