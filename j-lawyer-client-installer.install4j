@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="10.0.3" transformSequenceNumber="10">
   <directoryPresets config="../j-lawyer-releases/j-lawyer-client" />
-  <application name="j-lawyer.org (Client)" applicationId="2679-5007-8596-7844" mediaDir="./media" compression="9" lzmaCompression="true" pack200Compression="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="https://www.j-lawyer.org" version="2.3.0.1" allPathsRelative="true" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8">
+  <application name="j-lawyer.org (Client)" applicationId="2679-5007-8596-7844" mediaDir="./media" compression="9" lzmaCompression="true" pack200Compression="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="https://www.j-lawyer.org" version="2.3.1.0" allPathsRelative="true" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8">
     <languages>
       <principalLanguage id="de" customLocalizationFile="./j-lawyer-installer-client-i18n.properties" />
       <additionalLanguages>
@@ -21,7 +21,7 @@
       <variable name="download.3rdparty.libreoffice.version" value="7.1.2" />
       <variable name="download.3rdparty.mysql.version" value="5.7" />
     </variables>
-    <codeSigning macEnabled="true" macPkcs12File="./apple-codesigning-jkitconsult.p12" windowsEnabled="true" windowsPkcs12File="./windows-codesigning-sectigo-jenskutschke.pfx" />
+    <codeSigning macPkcs12File="./apple-codesigning-jkitconsult.p12" windowsEnabled="true" windowsPkcs12File="./windows-codesigning-sectigo-jenskutschke.pfx" />
     <jreBundles jdkProviderId="Liberica" release="11/11.0.14.1+1">
       <modules>
         <defaultModules set="all" />
@@ -1552,6 +1552,19 @@ return true;
           </screen>
           <screen id="8" beanClass="com.install4j.runtime.beans.screens.InstallationScreen" rollbackBarrier="true">
             <actions>
+              <action name="Delete lib folder before installing update" id="1023" beanClass="com.install4j.runtime.beans.actions.files.DeleteFileAction" actionElevationType="elevated" rollbackBarrierExitCode="0" multiExec="true" failureStrategy="askRetryQuit" errorMessage="Alte Bibliotheken konnten nicht entfernt werden.">
+                <serializedBean>
+                  <property name="files" type="array" class="java.io.File" length="1">
+                    <element index="0">
+                      <object class="java.io.File">
+                        <string>${installer:sys.installationDir}/lib</string>
+                      </object>
+                    </element>
+                  </property>
+                  <property name="recursive" type="boolean" value="true" />
+                </serializedBean>
+                <condition>context.getBooleanVariable("sys.confirmedUpdateInstallation")</condition>
+              </action>
               <action id="9" beanClass="com.install4j.runtime.beans.actions.InstallFilesAction" actionElevationType="elevated" errorMessage="${i18n:FileCorrupted}" />
               <action id="10" beanClass="com.install4j.runtime.beans.actions.desktop.CreateProgramGroupAction" actionElevationType="elevated">
                 <serializedBean>
@@ -2019,10 +2032,7 @@ update-alternatives --set java /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181.b15-5.f
     </windows>
   </mediaSets>
   <buildIds buildAll="false">
-    <mediaSet refId="28" />
     <mediaSet refId="29" />
-    <mediaSet refId="31" />
-    <mediaSet refId="1014" />
-    <mediaSet refId="1022" />
   </buildIds>
+  <buildOptions disableSigning="true" />
 </install4j>
