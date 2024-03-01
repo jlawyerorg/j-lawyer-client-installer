@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="10.0.3" transformSequenceNumber="10">
   <directoryPresets config="../j-lawyer-releases/j-lawyer-client" />
-  <application name="j-lawyer.org (Client)" applicationId="2679-5007-8596-7844" mediaDir="./media" compression="9" lzmaCompression="true" pack200Compression="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="https://www.j-lawyer.org" version="2.5.0.0" allPathsRelative="true" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8">
+  <application name="j-lawyer.org (Client)" applicationId="2679-5007-8596-7844" mediaDir="./media" compression="9" lzmaCompression="true" pack200Compression="true" shortName="j-lawyer-client" publisher="j-lawyer.org" publisherWeb="https://www.j-lawyer.org" version="2.6.0.2" allPathsRelative="true" macVolumeId="1fed40d665d2ed1b" javaMinVersion="1.8">
     <languages>
       <principalLanguage id="de" customLocalizationFile="./j-lawyer-installer-client-i18n.properties" />
       <additionalLanguages>
@@ -22,7 +22,7 @@
       <variable name="download.3rdparty.mysql.version" value="5.7" />
     </variables>
     <codeSigning macPkcs12File="./apple-codesigning-jkitconsult.p12" windowsEnabled="true" windowsPkcs12File="./windows-codesigning-sectigo-jenskutschke.pfx" />
-    <jreBundles jdkProviderId="Liberica" release="11/11.0.14.1+1">
+    <jreBundles jdkProviderId="Liberica" release="17/17.0.9+11">
       <modules>
         <defaultModules set="all" />
       </modules>
@@ -69,7 +69,7 @@
         <versionInfo include="true" fileVersion="${compiler:sys.version}" fileDescription="j-lawyer.org Client" legalCopyright="https://www.gnu.org/licenses/agpl-3.0.de.html" internalName="${compiler:sys.shortName}" productName="${compiler:sys.fullName}" />
       </executable>
       <splashScreen show="true" bitmapFile="../j-lawyer-releases/j-lawyer-client/j-lawyer-startup-splash.png" />
-      <java mainClass="com.jdimension.jlawyer.client.Main" vmParameters="-Xmx3072M -Djava.security.auth.login.config=auth.conf -Djava.net.preferIPv4Stack=true -Djavax.net.ssl.keyStore=ks.jpg -Dlog4j2.formatMsgNoLookups=true -Duser.language=de -Duser.country=DE -Dmail.mime.encodeparameters=false -Djdk.tls.namedGroups=&quot;secp256r1, secp384r1, secp521r1, ffdhe2048, ffdhe3072, ffdhe4096, ffdhe6144, ffdhe8192&quot;" preferredVM="client">
+      <java mainClass="com.jdimension.jlawyer.client.Main" vmParameters="-Xmx3072M --add-exports=java.base/sun.security.action=ALL-UNNAMED --add-exports=java.desktop/com.sun.imageio.plugins.jpeg=ALL-UNNAMED --add-exports=java.desktop/com.sun.imageio.spi=ALL-UNNAMED -Djava.security.auth.login.config=auth.conf -Djava.net.preferIPv4Stack=true -Djavax.net.ssl.keyStore=ks.jpg -Dlog4j2.formatMsgNoLookups=true -Duser.language=de -Duser.country=DE -Dmail.mime.encodeparameters=false -Djdk.tls.namedGroups=&quot;secp256r1, secp384r1, secp521r1, ffdhe2048, ffdhe3072, ffdhe4096, ffdhe6144, ffdhe8192&quot;" preferredVM="client">
         <classPath>
           <archive location="j-lawyer-client.jar" failOnError="false" />
         </classPath>
@@ -2001,7 +2001,7 @@ return console.askYesNo(message, true);
       <jreBundle release="openjdk8/jdk8u212-b04_openj9-0.14.2" includedJre="OpenJDK8U-jre_x64_windows_hotspot_8u212b04.tar.gz" manualJreEntry="true" />
     </windows>
     <macos name="Mac OS X Single Bundle Intel" id="30" mediaFileName="${compiler:sys.shortName}_macos_Intel-x64_${compiler:sys.version}" launcherId="27">
-      <jreBundle release="openjdk8/jdk8u212-b04_openj9-0.14.2" includedJre="OpenJDK8U-jre_x64_mac_hotspot_8u212b04.tar.gz" manualJreEntry="true" />
+      <jreBundle jdkProviderId="Liberica" release="17/17.0.4.1+1" includedJre="OpenJDK8U-jre_x64_mac_hotspot_8u212b04.tar.gz" manualJreEntry="true" />
     </macos>
     <unixInstaller name="Unix Installer" id="31">
       <jreBundle includedJre="OpenJDK8U-jre_x64_linux_hotspot_8u212b04.tar.gz" manualJreEntry="true" />
@@ -2032,10 +2032,11 @@ update-alternatives --set java /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181.b15-5.f
     </windows>
   </mediaSets>
   <buildIds buildAll="false">
-    <mediaSet refId="28" />
     <mediaSet refId="29" />
+    <mediaSet refId="30" />
     <mediaSet refId="31" />
     <mediaSet refId="1014" />
+    <mediaSet refId="1018" />
     <mediaSet refId="1022" />
   </buildIds>
 </install4j>
